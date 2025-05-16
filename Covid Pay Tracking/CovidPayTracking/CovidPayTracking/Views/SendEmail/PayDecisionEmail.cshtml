@@ -1,0 +1,50 @@
+﻿@model CovidPayTracking.Models.EmailViewModel
+@{
+    ViewBag.Title = "PayDecisionEmail";
+}
+
+<div class="container-fluid">
+    <p>Good Afternoon, </p><br />
+    <p>
+        We have reviewed your recent case with Employee Health and have processed
+        COVID pay for your absence during the <b>@Model.PayDecisionDt</b> payroll. Once you review your
+        paycheck for <b>@Model.PayDecisionDt</b> in Self Service, you will see that we processed
+        $<b>@Model.STDHoursPaidByNSHGross</b> for your COVID pay while you were out. You can view the
+        total amount on your paycheck in the "Earnings" section under "STD"
+        for the Northside population and “Non Prod Vaca” for the Gwinnett population.
+    </p>
+    <p style="padding-left:50px; padding-top:20px; padding-bottom:20px">
+        The COVID pay that you receive from Northside is based on the <b>@Model.STDElection_ThisYear</b>
+        Short Term Disability you elected during Annual Enrollment.
+        <br />
+        To get $<b>@Model.STDHoursPaidByNSHGross</b> - you take your base hourly rate x <b>@Model.STDPayHours</b> hours
+        you were out during the pay period x <b>@Model.STDElection_ThisYear</b> STD.
+    </p>
+    <p>
+        As outlined on MyNorthsideHR.com >> “Updates on COVID” slider >> COVID Pay,
+        as of March 2020 Northside is paying out COVID pay to each employee for 10 days
+        total, equivalent to the 2 week elimination period for Short Term Disability.
+        For your status that is <b>@Model.FTEHours</b> hours of time.
+    </p>
+    <p style="padding-left:50px; padding-top:20px; padding-bottom:20px">
+        Since March of 2020, you have used <b>@Model.TotalSTDPayHours</b> hours of your two week elimination
+        period for COVID and you have <b>@Model.DiffHoursToFTE/b> hours of COVID pay remaining.
+        <br />
+        Once you have used your total two-week elimination period of <b>@Model.FTEHours</b> hours of
+        COVID pay, you would need to request that your timekeeper enter PTO for any
+        future absence due to COVID.
+    </p>
+    <p>
+        Please note, if you were out for more than 2 weeks consecutively, you can request
+        a leave of absence with Cigna at (888) 842-4462. Once approved, you will be
+        compensated through CIGNA short term disability for any time missed after the first
+        2 weeks.
+        <br />
+        Stay Well,
+        Benefits Team
+
+    </p>
+</div>
+
+
+

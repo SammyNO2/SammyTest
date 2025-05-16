@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1231
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovidPayTracking", "CovidPayTracking\CovidPayTracking.csproj", "{AF73E92C-6AC8-4406-AB18-2D58B2E40AEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF73E92C-6AC8-4406-AB18-2D58B2E40AEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF73E92C-6AC8-4406-AB18-2D58B2E40AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF73E92C-6AC8-4406-AB18-2D58B2E40AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF73E92C-6AC8-4406-AB18-2D58B2E40AEF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {749BD1FE-E3A3-426F-97E9-A04C3C1DE74A}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://nsmvtfs02.northside.local/dataanddevelopmentservices
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = CovidPayTracking\\CovidPayTracking.csproj
+		SccProjectName1 = CovidPayTracking
+		SccLocalPath1 = CovidPayTracking
+	EndGlobalSection
+EndGlobal

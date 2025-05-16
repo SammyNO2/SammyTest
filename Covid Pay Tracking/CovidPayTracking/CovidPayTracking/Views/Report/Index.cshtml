@@ -1,0 +1,220 @@
+﻿@model CovidPayTracking.Models.IndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-sm-1">
+
+        </div>
+        <div class="col-sm-10">
+            <h2>Export Reports to Excel</h2>
+            <p>
+                Please select the date range, then click on the report of interest.
+            </p>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Search By Date Range:
+                    </h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="container">
+                        <div class="row">
+                            &nbsp;
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group date" id="divFromDt">
+                                        @Html.TextBoxFor(f => f.SearchFromDate, htmlAttributes: new { @class = "form-control no-max-width", @placeholder = "FROM", @id = "fromDt" })
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group date" id="divToDt">
+                                        @Html.TextBoxFor(f => f.SearchToDate, htmlAttributes: new { @class = "form-control no-max-width", @placeholder = "TO", @id = "toDt" })
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            &nbsp;
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-12 pull-left">
+                                    <blockquote>
+                                        <h4>HotLineLog Report with Historical Information</h4>
+                                        <p style="font-size:12px; color:grey">
+                                            List of all Employee Call Records with their STD Election, Hours Previously Paid, FTE Hours, Difference- Hours to FTE and Overall Status info.  This Report is not impacted or filtered by the selected date range.
+                                        </p>
+                                        <input class="btn btn-default" type="submit" value="Export" name="action:ExportReportWithPayAndOverallStatus" />
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            &nbsp;
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-12 pull-left">
+                                    <blockquote>
+                                        <h4>New Pay Review Status Employees Report </h4>
+                                        <p style="font-size:12px; color:grey">
+                                            List of all Employees filtered by "Date of Call" for selected date range and Pay Review Status is "New" .
+                                        </p>
+                                        <input class="btn btn-default" type="submit" value="Export" name="action:ExportReportPayReviewStatusNew" />
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            &nbsp;
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-12 pull-left">
+                                    <blockquote>
+                                        <h4>Pay Decision Report:</h4>
+                                        <p style="font-size:12px; color:grey">
+                                            Report of all "Yes" Pay Decisions filtered by "Pay Decision Date" for selected date range
+                                        </p>
+                                        <input class="btn btn-default" type="submit" value="Export" name="action:ExportReportByPayDate" />
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            &nbsp;
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-12 pull-left">
+                                    <blockquote>
+                                        <h4>All Pay Decisions Report:</h4>
+                                        <p style="font-size:12px; color:grey">
+                                            Report of all Pay Decisions filtered by "Pay Decision Date" for selected date range
+                                        </p>
+                                        <input class="btn btn-default" type="submit" value="Export" name="action:ExportAllPayDecisionReport" />
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            &nbsp;
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-12 pull-left">
+                                    <blockquote>
+                                        <h4>Detailed Pay Decision Report:</h4>
+                                        <p style="font-size:12px; color:grey">
+                                            Report of all Pay Decisions with detailed view of COVID Bank Pay Total Gross filtered by "Pay Decision Date" for selected date range
+                                        </p>
+                                        <input class="btn btn-default" type="submit" value="Export" name="action:ExportReportByPayDateDetail" />
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            &nbsp;
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-12 pull-left">
+                                    <blockquote>
+                                        <h4>Master Report:</h4>
+                                        <p style="font-size:12px; color:grey">
+                                            List of all Employee Call Records merged with Pay Decisions and filtered by "Date of Call" for selected date range
+                                        </p>
+                                        <input class="btn btn-default" type="submit" value="Export" name="action:ExportReport" />
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            &nbsp;
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-12 pull-left">
+                                    <blockquote>
+                                        <h4>Employee STD Election and Merit Report:</h4>
+                                        <p style="font-size:12px; color:grey">
+                                            Report of STD Election and Merit for all Employees. This Report is not impacted or filtered by the selected date range.
+                                        </p>
+                                        <input class="btn btn-default" type="submit" value="Export" name="action:ExportSTDElectionPay" />
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            &nbsp;
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-12 pull-left">
+                                    <blockquote>
+                                        <h4>Frequently Paid Report:</h4>
+                                        <p style="font-size:12px; color:grey">
+                                            Report of employees who have recieved COVID Pay 4 or more times.
+                                        </p>
+                                        <input class="btn btn-default" type="submit" value="Export" name="action:ExportFrequents" />
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1">
+
+        </div>
+    </div>
+    
+    @section Scripts
+{
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#divFromDt").datetimepicker({
+                    format: 'MM-DD-YYYY'
+                });
+
+
+                $("#divToDt").datetimepicker({
+                    format: 'MM-DD-YYYY'
+                });
+            });
+                        //$(document).ready(function () {
+                        //    $("#divbyPayDecisionFromDt").datetimepicker({
+                        //        format: 'MM-DD-YYYY'
+                        //    });
+
+
+                        //    $("#divbyPayDecisionToDt").datetimepicker({
+                        //        format: 'MM-DD-YYYY'
+                        //    });
+                        //});
+        </script>
+    }
+}

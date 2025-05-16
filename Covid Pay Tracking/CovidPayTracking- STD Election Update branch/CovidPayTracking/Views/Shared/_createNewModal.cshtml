@@ -1,0 +1,507 @@
+﻿@model CovidPayTracking.Models.PayDecisionViewModel
+
+@{
+    var PayDecisionStatusDDL = new List<SelectListItem>
+    {
+        new SelectListItem {Text = "Yes", Value = "Yes"},
+        new SelectListItem {Text = "No", Value = "No"},
+        new SelectListItem {Text = "No - Resource EE", Value = "No - Resource EE"},
+        new SelectListItem {Text = "No - EE Worked Scheduled Hours", Value = "No - EE Worked Scheduled Hours"},
+       @* new SelectListItem {Text = "No - PTC EE - Wavied Coverage", Value = "No - PTC EE - Wavied Coverage"},*@
+        new SelectListItem {Text = "No - ADP EE", Value = "No - ADP EE"},
+        new SelectListItem {Text = "No - ADP Physician", Value = "No - ADP Physician"},
+        new SelectListItem {Text = "No - Cannot Find EE", Value = "No - Cannot Find EE"},
+       @* new SelectListItem {Text = "No - Max Paid Previously", Value = "No - Max Paid Previously"},*@
+        new SelectListItem {Text = "No - Other", Value = "No - Other"}
+
+    };
+}
+
+<style>
+    .nsh-pad-bottom {
+        padding-bottom: 10px;
+    }
+    .nsh-pad-l {
+        padding-left: 20px;
+    }
+    .nsh-pad-r {
+        padding-right: 20px;
+    }
+</style>
+@using (Html.BeginForm("CreateNew", "LogPayDecision", FormMethod.Post, new { onsubmit = "return SubmitNew(this)" }))
+{
+    <div class="modal fade" id="createNewModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content clearfix">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add For New Pay Period</h4>
+                    <div class="row">
+                        &nbsp;
+                    </div>
+                    <div class="row py-3 my-3">
+                        <div class="col-sm-4 nsh-pad-l">
+                            <label>Employee ID: </label>
+                            <span>@Html.DisplayFor(m => m.EmployeeID)</span>
+                        </div>
+                        <div class="col-sm-8 text-right">
+                            <div class="row nsh-pad-r ">
+                                <label>Last Day Worked: </label>
+                                <span>@Html.DisplayFor(m => m.LastDayWorked)</span>
+                            </div>
+                            <div class="row nsh-pad-r ">
+                                <label>Return to Work Date: </label>
+                                <span>@Html.DisplayFor(m => m.ReturnToWorkDt)</span>
+                            </div>  
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row text-center">
+                            <div class="col-sm-2">
+                                <div class="row px-5 mx-5">
+                                    <label>FTE Hours</label>
+                                </div>
+                                <div class="row px-5 mx-5">
+                                    <span>@Html.DisplayFor(m => m.FTEHours)</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="row px-5 mx-5">
+                                    <label>FTE Status</label>
+                                </div>
+                                <div class="row px-5 mx-5">
+                                    <span>@Html.DisplayFor(m => m.FTEStatus)</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="row px-5 mx-5">
+                                    <label>STD Hours Paid</label>
+                                </div>
+                                <div class="row px-3 mx-5">
+                                    <span>@Html.DisplayFor(m => m.TotalSTDPayHours)</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="row px-5 mx-5">
+                                    <label>Hours Left in COVID Bank</label>
+                                </div>
+                                <div class="row px-5 mx-5">
+                                    <span id="COVIDBankHoursRemaining"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="row px-5 mx-5">
+                                    <label>This Year STD Election</label>
+                                </div>
+                                <div class="row px-5 mx-5">
+                                    <span>@Html.DisplayFor(m => m.STDElection_ThisYear)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        &nbsp;
+                    </div>
+                    
+                    <div class="container-fluid col-lg-12">
+                        <div class="row">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PayDecisionStatus, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6  nsh-pad-bottom">
+                                    @*@Html.EditorFor(model => model.PayDecisionStatus, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.DropDownList("PayDecisionStatus", PayDecisionStatusDDL, "--Select--", htmlAttributes: new { @class = "form-control"})
+
+                                    @Html.ValidationMessageFor(model => model.PayDecisionStatus, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ReturnToWork, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6  nsh-pad-bottom">
+                                    @Html.CheckBoxFor(model => model.ReturnToWork, new { htmlAttributes = new { @class = "form-control checkbox", id = "returnToWork" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="showClockedInDt" style="display:none">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ClockedIn_ClearedToWork_Dt, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-4  nsh-pad-bottom">
+                                    <div class="input-group date datetimepicker" id="divCleardToWorkDt">
+                                        @Html.EditorFor(model => model.ClockedIn_ClearedToWork_Dt, new { htmlAttributes = new { @class = "form-control", @id = "clearedToWorkDt" } })
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.ClockedIn_ClearedToWork_Dt, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.STDPayDates, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6 nsh-pad-bottom">
+                                    @Html.EditorFor(model => model.STDPayDates, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.STDPayDates, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PayDecisionDt, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6 nsh-pad-bottom">
+                                    @*<div class="input-group date datetimepicker" id="divPayDecisionDt">
+                            @Html.EditorFor(model => model.PayDecisionDt, new { htmlAttributes = new { @class = "form-control", @id = "payDecisionDt" } })
+
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>*@
+                                    @Html.DropDownListFor(m => m.PayDecisionDt, new SelectList(Model.PayDates, "Value", "Text"), "Select", new { @class = "form-control" })
+
+                                    @Html.ValidationMessageFor(model => model.PayDecisionDt, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PTOAdjustment, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6 nsh-pad-bottom">
+                                    @Html.EditorFor(model => model.PTOAdjustment, new { htmlAttributes = new { @class = "form-control", @id = "PTOAdjustment" } })
+                                    @Html.ValidationMessageFor(model => model.PTOAdjustment, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ReverseRegHours, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6 nsh-pad-bottom">
+                                    @Html.EditorFor(model => model.ReverseRegHours, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ReverseRegHours, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6 nsh-pad-bottom">
+                                    @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control", @rows = "6" } })
+                                    @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="container-fluid" id="Pay 1">
+                            <h4 class="text-muted">Pay Section 1: Employee Has Hours Remaining in COVID Bank</h4>
+                            <div class="row">
+                                &nbsp;
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.HoursInTimeCard, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.EditorFor(model => model.HoursInTimeCard, new { htmlAttributes = new { @class = "form-control", @id = "hoursInTimeCard" } })
+                                            @Html.ValidationMessageFor(model => model.HoursInTimeCard, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.STDPayHours, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.EditorFor(model => model.STDPayHours, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.STDPayHours, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.COVIDBankPayGross, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @*<span class="glyphicon glyphicon-usd"></span>*@
+                                            @Html.EditorFor(model => model.COVIDBankPayGross, new { htmlAttributes = new { @class = "form-control", @id = "COVIDBankPayGross" } })
+                                            @Html.ValidationMessageFor(model => model.COVIDBankPayGross, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.PTOHoursPaid, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.EditorFor(model => model.PTOHoursPaid, new { htmlAttributes = new { @class = "form-control", @id = "PTOHoursPaidSection1" } })
+                                            @Html.ValidationMessageFor(model => model.PTOHoursPaid, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.PTODollarsPaid, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.EditorFor(model => model.PTODollarsPaid, new { htmlAttributes = new { @class = "form-control", @id = "PTODollarsPaidSection1" } })
+                                            @Html.ValidationMessageFor(model => model.PTODollarsPaid, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                &nbsp;
+                            </div>
+                            <div class="text-danger" id="negCOVIDBankPayGross"></div>
+                            <div class="text-danger" id="bankExhaustedWarning"></div>
+                            <hr />
+                        </div>
+                        <div class="container-fluid" id="Pay 2">
+                            <h4 class="text-muted">Pay Section 2: Employee Has Used All Hours in COVID Bank</h4>
+                            <h4 class="text-muted">Each week needs to be reviewed individually</h4>
+                            <div class="row">
+                                &nbsp;
+                            </div>
+                            <div class="col-lg-6">
+                                <h5 class="text-muted">WEEK 1</h5>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Week1Cigna, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.CheckBoxFor(model => model.Week1Cigna, new { htmlAttributes = new { @class = "form-control checkbox", id = "week1Cigna", @checked = "true" } })
+                                        </div>
+                                        <input id="Week1CignaHidden" name="Week1CignaHidden" value="false" type="hidden">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Week1TimeCardHours, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.EditorFor(model => model.Week1TimeCardHours, new { htmlAttributes = new { @class = "form-control", @id = "week1HoursInTimeCard" } })
+                                            @Html.ValidationMessageFor(model => model.Week1TimeCardHours, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Week1COVIDPayHours, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.EditorFor(model => model.Week1COVIDPayHours, new { htmlAttributes = new { @class = "form-control", @id = "week1COVIDPayHours" } })
+                                            @Html.ValidationMessageFor(model => model.Week1COVIDPayHours, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Week1COVIDPayGross, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.EditorFor(model => model.Week1COVIDPayGross, new { htmlAttributes = new { @class = "form-control", @id = "week1COVIDPayGross" } })
+                                            @Html.ValidationMessageFor(model => model.Week1COVIDPayGross, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.PTOHoursPaidWeek1, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.EditorFor(model => model.PTOHoursPaidWeek1, new { htmlAttributes = new { @class = "form-control", @id = "PTOHoursPaidSection2Week1" } })
+                                            @Html.ValidationMessageFor(model => model.PTOHoursPaidWeek1, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.PTODollarsPaidWeek1, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.EditorFor(model => model.PTODollarsPaidWeek1, new { htmlAttributes = new { @class = "form-control", @id = "PTODollarsPaidSection2Week1" } })
+                                            @Html.ValidationMessageFor(model => model.PTODollarsPaidWeek1, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-danger" id="bankExhaustedWarningWeek1"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h5 class="text-muted">WEEK 2</h5>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Week2Cigna, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.CheckBoxFor(model => model.Week2Cigna, new { htmlAttributes = new { @class = "form-control checkbox", id = "Week2Cigna", @checked = "true" } })
+                                        </div>
+                                        <input id="Week2CignaHidden" name="Week2CignaHidden" value="false" type="hidden">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Week2TimeCardHours, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.EditorFor(model => model.Week2TimeCardHours, new { htmlAttributes = new { @class = "form-control", @id = "week2HoursInTimeCard" } })
+                                            @Html.ValidationMessageFor(model => model.Week2TimeCardHours, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Week2COVIDPayHours, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.EditorFor(model => model.Week2COVIDPayHours, new { htmlAttributes = new { @class = "form-control", @id = "week2COVIDPayHours" } })
+                                            @Html.ValidationMessageFor(model => model.Week2COVIDPayHours, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Week2COVIDPayGross, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.EditorFor(model => model.Week2COVIDPayGross, new { htmlAttributes = new { @class = "form-control", @id = "week2COVIDPayGross" } })
+                                            @Html.ValidationMessageFor(model => model.Week2COVIDPayGross, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.PTOHoursPaidWeek2, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.EditorFor(model => model.PTOHoursPaidWeek2, new { htmlAttributes = new { @class = "form-control", @id = "PTOHoursPaidSection2Week2" } })
+                                            @Html.ValidationMessageFor(model => model.PTOHoursPaidWeek2, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.PTODollarsPaidWeek2, htmlAttributes: new { @class = "control-label col-md-4" })
+                                        <div class="col-md-6 nsh-pad-bottom">
+                                            @Html.EditorFor(model => model.PTODollarsPaidWeek2, new { htmlAttributes = new { @class = "form-control", @id = "PTODollarsPaidSection2Week2" } })
+                                            @Html.ValidationMessageFor(model => model.PTODollarsPaidWeek2, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-danger" id="bankExhaustedWarningWeek2"></div>
+                            </div>
+                            <div class="row">
+                                &nbsp;
+                                <div class="col-lg-12">
+                                    <hr />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.COVIDPayTotalGross, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6 nsh-pad-bottom">
+                                        @Html.EditorFor(model => model.COVIDPayTotalGross, new { htmlAttributes = new { @class = "form-control", @id = "COVIDPayTotalGross" } })
+                                        @Html.ValidationMessageFor(model => model.COVIDPayTotalGross, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-danger" id="bankExhaustedWarningTotal"></div>
+                            <div class="row">
+                                &nbsp;
+                                <div class="col-lg-12">
+                                    <hr />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PTOPayHours, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6 nsh-pad-bottom">
+                                        @Html.EditorFor(model => model.PTOPayHours, new { htmlAttributes = new { @class = "form-control", @id = "PTOPayHours" } })
+                                        @Html.ValidationMessageFor(model => model.PTOPayHours, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PTOAddedByTimekeeper, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6 nsh-pad-bottom">
+                                        @Html.EditorFor(model => model.PTOAddedByTimekeeper, new { htmlAttributes = new { @class = "form-control", @id = "PTOAddedByTimekeeper" } })
+                                        @Html.ValidationMessageFor(model => model.PTOAddedByTimekeeper, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.TotalPTOAdjustment, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-6 nsh-pad-bottom">
+                                        @Html.EditorFor(model => model.TotalPTOAdjustment, new { htmlAttributes = new { @class = "form-control", @id = "TotalPTOAdjustment" } })
+                                        @Html.ValidationMessageFor(model => model.TotalPTOAdjustment, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        @*<div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MadeWhole, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-3 nsh-pad-bottom">
+                        @Html.CheckBoxFor(model => model.ReturnToWork, new { htmlAttributes = new { @class = "form-control checkbox", id = "madeWhole" } })
+
+                    </div>
+                </div>
+            </div>*@
+
+                        @*<div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FTEHours, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4 nsh-pad-bottom">
+                        @Html.EditorFor(model => model.FTEHours, new { htmlAttributes = new { @class = "form-control", @readOnly = true } })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RateOfPay, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4 nsh-pad-bottom">
+                        @Html.EditorFor(model => model.RateOfPay, new { htmlAttributes = new { @class = "form-control", @readOnly = true } })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.STDElection_2021, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4 nsh-pad-bottom">
+                        @Html.EditorFor(model => model.STDElection_2021, new { htmlAttributes = new { @class = "form-control", @readOnly = true } })
+                    </div>
+                </div>
+            </div>*@
+                        <div class="row">
+                            @Html.HiddenFor(model => model.FTEHours)
+                            @Html.HiddenFor(model => model.RateOfPay)
+                            @Html.HiddenFor(model => model.STDElection_ThisYear)
+                            @Html.HiddenFor(model => model.EmployeeID)
+                        </div>
+
+                        <div class="row">
+                            &nbsp;
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-lg-12 text-center">
+                                    <input type="submit" id="save" value="Submit" class="btn btn-default nsh-modal-button-margin" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+}
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+        //$('.modal-dialog').draggable({
+        //                        handle: ".modal-header"
+        //                    });
+    </script>
+}
