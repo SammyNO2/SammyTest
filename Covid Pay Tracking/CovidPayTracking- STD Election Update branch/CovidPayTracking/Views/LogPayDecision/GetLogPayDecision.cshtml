@@ -1,0 +1,907 @@
+﻿@model CovidPayTracking.Models.HotlineLogPayDecisionViewModel
+
+@{
+    ViewBag.Title = "GetLogPayDecision";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="modalWrapper">
+    @* Inject form here *@
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-sm-1">
+
+        </div>
+        <div class="col-sm-10">
+            <h2>Call and Pay Decision History</h2>
+            <hr />
+            <table class="table table-sm" id="mainTable">
+                <thead>
+                    <tr>
+                        <th scope="col"> Employee ID</th>
+                        <th scope="col"> Employee First Name</th>
+                        <th scope="col"> Employee Last Name</th>
+                        <th scope="col"> FTE Status</th>
+                        @*<th scope="col"> 2020 STD Election</th>*@
+                        <th scope="col"> This Year STD Election</th>
+                        <th scope="col"> STD Election Detail</th>
+                        <th scope="col"> Rate Of Pay</th>
+                        <th scope="col"> FTE Hours</th>
+                        <th scope="col"> COVID Bank Pay Hours</th>
+                        <th scope="col"> Hours Left in COVID Bank</th>
+                        <th scope="col"> STD Plus COVID Bank Gross Pay</th>
+                        @*<th scope="col"> Overall Review Status</th>
+        <th scope="col"> Made Whole?</th>
+        <th scope="col"> Case Note</th>*@
+                        <th scope="col"> Pay Review Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> @Html.DisplayFor(m => m.EmployeeID)</td>
+                        <td> @Html.DisplayFor(m => m.EmployeeFirstName)</td>
+                        <td> @Html.DisplayFor(m => m.EmployeeLastName)</td>
+                        <td><span id="FTE_status">@Html.DisplayFor(m => m.FTEStatus)</span></td>
+                        @*<td> @Html.DisplayFor(m => m.STDElection_2020)</td>*@
+                        <td><span id="STD_ThisYear">@Html.DisplayFor(m => m.STDElection_ThisYear)</span></td>
+                        <td>@if(Model.STDElection_ThisYear.StartsWith("0.0") || Model.STDElection_Detail == "Per Diem") 
+                            { 
+                              @Html.DisplayFor(m => m.STDElection_Detail) 
+                            }
+                        </td>
+                        <td> @Html.DisplayFor(m => m.RateOfPay)</td>
+                        <td> @Html.DisplayFor(m => m.FTEHours)</td>
+                        <td> @Html.DisplayFor(m => m.TotalSTDPayHours)</td>
+                        <td> <span id="diffHoursToFTEVal">@Html.DisplayFor(m => m.DiffHoursToFTE)</span></td>
+                        <td> @Html.DisplayFor(m => m.COVIDPayTotalGross)</td>
+                        @*@<td> @Html.DisplayFor(m => m.RecordStatus)</td>
+                        <td>
+                        @Html.CheckBoxFor(m => m.MadeWhole, new { @disabled = "disabled" })
+                    </td>
+                    <td> <span id="caseNote">@Html.DisplayFor(m => m.CaseNote)</span></td>*@
+                    <td> @Html.DisplayFor(m => m.PayReviewStatus)</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr />
+        <h4>Pay Decision History</h4>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <span class="btn btn-link" style="padding-left:0px;">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    @Html.ActionLink("Add For New Pay Period", null, null, new { @onclick = "return CreateNew('" + @Model.EmployeeID + "','" + @Model.FTEHours + "','" + @Model.RateOfPay + "','" + @Model.STDElection_ThisYear + "','" + @Model.FTEStatus + "','" + @Model.LastDayWorked?.ToString("MM/dd/yyyy") + "','" + @Model.ReturnToWorkDt?.ToString("MM/dd/yyyy") + "','" + @Model.TotalSTDPayHours + "');" })
+                </span>
+
+            </div>
+        </div>
+
+        <div class="row">
+            &nbsp;
+        </div>
+
+        <table id="payDecisionList" class="table table-striped table-bordered " style="width:100%;">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>
+                        Employee ID
+                    </th>
+                    <th>
+                        Pay Decision Date
+                    </th>
+                    <th>
+                        Pay Decision Status
+                    </th>
+                    <th>
+                        Clocked In/Cleared To Work Date
+                    </th>
+                    <th>
+                        STD Pay dates (from-to)
+                    </th>
+                    <th>
+                        COVID Pay Hours
+                    </th>
+                    <th>
+                        COVID Bank Pay- Gross (After 10/1/21)
+                    </th>
+                    <th>
+                        Total STD Hours Paid- Gross (Prior to 10/1/21)
+                    </th>
+                    <th>
+                        PTO Adjustment
+                    </th>
+                    <th>
+                        Reverse Reg Hours
+                    </th>
+                    <th>
+                        Notes
+                    </th>
+                    @*<th>ID</th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.PayDecisionsByEmployee)
+                    {
+                        <tr>
+                            <td>
+                                @Html.ActionLink("Edit", null, null, new { @onclick = "return EditRecord('" + item.ID + "','" + @Model.EmployeeID + "','" + @Model.FTEHours + "','" + @Model.FTEStatus + "','" + @Model.RateOfPay + "','" + @Model.STDElection_ThisYear + "','" + @Model.TotalSTDPayHours + "');" }) |
+
+                                @Html.ActionLink("Delete", null, null, new { @onclick = "return InactivateRecord(" + item.ID + ");" })
+                                @*<a id="btnCancel" href="/Staffing/Cancel/' + oData.ID + '" onclick="return ConfirmCancel();">Cancel</a>*@
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EmployeeID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PayDecisionDt)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PayDecisionStatus)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ClockedIn_ClearedToWork_Dt)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.STDPayDates)
+                            </td>
+                            <td>
+                                @functions{
+                                    public static decimal ValidateToDecimal(string strValue)
+                                    {
+                                        decimal decValue = 0m;
+                                        if (strValue != null && strValue != "")
+                                        {
+                                            decimal outResult;
+                                            decValue = decimal.TryParse(strValue, out outResult) ? outResult : 0m;
+                                        }
+                                        return decValue;
+                                    }
+
+                                }
+                                @{
+                                    var totalCOVIDPayHours = ValidateToDecimal(item.STDPayHours);
+                                    var week1COVIDPayHours = ValidateToDecimal(item.Week1COVIDPayHours);
+                                    var week2COVIDPayHours = ValidateToDecimal(item.Week2COVIDPayHours);
+
+                                    if (!item.Week1Cigna)
+                                    {
+                                        totalCOVIDPayHours += week1COVIDPayHours;
+
+                                    }
+                                    if (!item.Week2Cigna)
+                                    {
+                                        totalCOVIDPayHours += week2COVIDPayHours;
+                                    }
+                                }
+                                @(totalCOVIDPayHours.ToString())
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.COVIDPayTotalGross)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.STDHoursPaidByNSHGross)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PTOAdjustment)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ReverseRegHours)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Notes)
+                            </td>
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.ID)
+                                </td>*@
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+
+            <hr />
+
+            <h4>Call Log History</h4>
+
+            <div class="row">
+                &nbsp;
+            </div>
+
+
+            <table id="callLogList" class="table table-striped table-bordered" style="width:100%;">
+                <thead>
+                    <tr>
+                        <th>
+                            Employee ID
+                        </th>
+                        <th>
+                            Date of Call
+                        </th>
+                        <th>
+                            Operator
+                        </th>
+                        <th>
+                            Cleared To Work?
+                        </th>
+                        <th>
+                            Notes
+                        </th>
+                        <th>
+                            Last Day Worked
+                        </th>
+                        <th>
+                            Return to Work Date
+                        </th>
+                        <th>
+                            Hours Previously Paid
+                        </th>
+                        <th>
+                            FTE Hours
+                        </th>
+                        <th>
+                            Hours Left in COVID Bank
+                        </th>
+                        <th>
+                            Notes from Benefits
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.HotlineLogsByEmployee)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EmployeeID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateOfCall)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Operator)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ClearedToWork)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Notes)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LastDayWorked)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ReturnToWorkDt)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HoursPreviouslyPaid)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FTEHours)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiffHoursToFTE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NotesFromBenefits)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+        <div class="col-sm-1">
+
+        </div>
+    </div>
+
+
+    @section Scripts
+{
+        @*<script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+            <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+        <script type="text/javascript" src="~/Scripts/PayCalculations.js"></script>
+        <script type="text/javascript" src="~/Scripts/UIScripts.js"></script>
+        <script type="text/javascript">
+            var pD;
+            var cL;
+            $(document).ready(function () {
+
+                cL = $('#callLogList').DataTable({
+                    //"scrollX": true,
+                    //"scrollCollapse": true,
+                    //"scrollY": '37vh',
+                    "dom": 'lrtip',
+                    "order": [[1, 'desc']],
+                    "fixedColumns":
+                    {
+                        "leftColumns": "2"
+                    },
+                    columnDefs:
+                        [
+                            { type: 'datetime-us-flex', targets: [1, 5, 6] },
+                            {
+                                orderable: false,
+                                targets: [10]
+                            },
+                            {
+                                targets: [4],
+                                orderable: false
+                            },
+                            {
+                                targets: [1],
+                                render: function (data) {
+                                    return (data != null && data != '') ? moment(data).format("MM/DD/YYYY") : '';
+                                },
+                                orderable: false
+                            },
+                            {
+                                targets: [5],
+                                render: function (data) {
+                                    return (data != null && data != '') ? moment(data).format("MM/DD/YYYY") : '';
+                                }
+                            },
+                            {
+                                targets: [6],
+                                render: function (data) {
+                                    return (data != null && data != '') ? moment(data).format("MM/DD/YYYY") : '';
+                                }
+                            }
+                        ],
+                    "createdRow": function (row, data, index) {
+                        if (($.isNumeric(data[9]) ? parseInt(data[9]) : 0) > 0) {
+                            $('td', row).eq(9).addClass('danger');
+                        }
+                    }
+                });
+
+                pD = $('#payDecisionList').DataTable({
+                    //"scrollX": true,
+                    //"scrollCollapse": true,
+                    //"scrollY": '37vh',
+                    "dom": 'lrtip',
+                    "order": [[2, 'desc']],
+                    "fixedColumns":
+                    {
+                        "leftColumns": "2"
+                    },
+                    columnDefs:
+                        [
+                            { type: 'datetime-us-flex', targets: [2] },
+                            {
+                                orderable: false,
+                                targets: [0]
+                            },
+                            {
+                                orderable: false,
+                                targets: [10]
+                            },
+                            {
+                                orderable: false,
+                                targets: [11]
+                            },
+                            {
+                                targets: [2],
+                                render: function (data) {
+                                    return (data != null && data != '') ? moment(data).format("MM/DD/YYYY") : '';
+                                }
+                            },
+                            {
+                                targets: [7],
+                                render: function (data) {
+                                    return (data != null && data != '') ? '$' + data : '';
+                                }
+
+                            }
+                        ]
+                });
+
+            });
+
+            function SetUpPickers() {
+                $('.datetimepicker').datetimepicker({ format: 'MM/DD/YYYY' });
+            }
+            function CreateNew(empID, fteHour, rateofPay, stdElection, fteStatus, lastDayWorked, returnToWorkDt, totalSTDPayHours) {
+                //debugger;
+                $.ajax({
+                    type: "GET",
+                    url: '/LogPayDecision/CreateNew',
+                    data: {
+                        empID: empID,
+                        fteHour: fteHour,
+                        rateofPay: rateofPay,
+                        stdElection: stdElection,
+                        fteStatus: fteStatus,
+                        lastDayWorked: lastDayWorked,
+                        returnToWorkDt: returnToWorkDt,
+                        totalSTDPayHours: totalSTDPayHours
+                    },
+                    success: function (data) {
+                        $(function () {
+                            $('#createNewModal').modal({
+                                keyboard: false,
+                                show: true
+                            });
+
+                        });
+                        $('#modalWrapper').html(data);
+                        SetUpPickers();
+                        var bankExhausted = false;
+                        var FTEHours = $.isNumeric(fteHour) ? parseFloat(fteHour) : 0;
+                        var totalSTDHours = $.isNumeric(totalSTDPayHours) ? parseFloat(totalSTDPayHours) : 0;
+                        var fteStatusFlt = $.isNumeric(fteStatus) ? parseFloat(fteStatus) : 0;
+                        var COVIDBankHoursRemaining = (FTEHours - totalSTDHours).toFixed(2).toString();
+                        $('#COVIDBankHoursRemaining').html(COVIDBankHoursRemaining);
+                        if (COVIDBankHoursRemaining <= 0) {
+                            bankExhausted = true;
+                            $('#bankExhaustedWarning').html("COVID Bank has been exhausted. Please use Section 2 of this form.");
+                            $('#hoursInTimeCard').prop('disabled', true);
+                            $('#STDPayHours').prop('disabled', true);
+                            $('#COVIDBankPayGross').prop('disabled', true);
+                            $('#PTODollarsPaidSection1').prop('disabled', true);
+                            $('#PTOHoursPaidSection1').prop('disabled', true);
+                        }
+                        $('#PayDecisionStatus').on('change', function () {
+                            debugger;
+                            if (this.value != "Yes") {
+                                disableAll(false);
+                            }
+                            else {
+                                enableAll(bankExhausted, false);
+                            }
+                        });
+                        $('#ReturnToWork').on('change', function () {
+                            if (this.checked) {
+                                $('#showClockedInDt').show();
+                            } else {
+                                $('#showClockedInDt').hide();
+                                $('#clearedToWorkDt').val('');
+                            }
+                        });
+                        $('#Week1Cigna').on('change', function () {
+                            if (this.checked) {
+                                $('#Week1CignaHidden').val('true');
+                            } else {
+                                $('#Week1CignaHidden').val('false');
+                            }
+                            if ($('#week1HoursInTimeCard').val().trim()) {
+                                $('#week1HoursInTimeCard').trigger("change");
+                            }
+
+                        });
+                        $('#Week2Cigna').on('change', function () {
+                            if (this.checked) {
+                                $('#Week2CignaHidden').val('true');
+                            } else {
+                                $('#Week2CignaHidden').val('false');
+                            }
+                            if ($('#week2HoursInTimeCard').val().trim()) {
+                                $('#week2HoursInTimeCard').trigger("change");
+                            }
+                        });
+                        $('#hoursInTimeCard').on('change', function () {
+                            if ($('#hoursInTimeCard').val() != '') {
+                                calcSect1FromTimeCard();
+                            }
+                        });
+                        $('#STDPayHours').on('change', function () {
+                            if ($('#STDPayHours').val() != '') {
+                                calcSect1FromPayHours();
+                            }
+                        });
+                        $('#COVIDBankPayGross').on('change', function () {
+                            if ($('#COVIDBankPayGross').val() != '') {
+                                calcSect1FromBankPay();
+                            }
+                        });
+                        $('#PTOHoursPaidSection1').on('change', function () {
+                            if ($('#PTOHoursPaidSection1').val() != '') {
+                                calcSect1FromPTOHours();
+                            }
+                        });
+                        $('#PTODollarsPaidSection1').on('change', function () {
+                            if ($('#PTODollarsPaidSection1').val() != '') {
+                                calcSect1FromPTODollars();
+                            }
+                        });
+                        $('#week1HoursInTimeCard').on('change', function () {
+                            if ($('#week1HoursInTimeCard').val() != '') {
+                                calcSect2FromTimeCard(this);
+                            }
+                        });
+                        $('#week2HoursInTimeCard').on('change', function () {
+                            if ($('#week2HoursInTimeCard').val() != '') {
+                                calcSect2FromTimeCard(this);
+                            }
+                        });
+                        $('#week1COVIDPayHours').on('change', function () {
+                            if ($('#week1COVIDPayHours').val() != '') {
+                                calcSect2FromPayHours(this);
+                            }
+                        });
+                        $('#week2COVIDPayHours').on('change', function () {
+                            if ($('#week2COVIDPayHours').val() != '') {
+                                calcSect2FromPayHours(this);
+                            }
+                        });
+                        $('#week1COVIDPayGross').on('change', function () {
+                            if ($('#week1COVDPayGross').val() != '') {
+                                calcSect2FromCOVIDPay(this);
+                            }
+                        });
+                        $('#week2COVIDPayGross').on('change', function () {
+                            if ($('#week2COVDPayGross').val() != '') {
+                                calcSect2FromCOVIDPay(this);
+                            }
+                        });
+                        $('#PTODollarsPaidSection2Week1').on('change', function () {
+                            if ($('#PTODollarsPaidSection2Week1').val() != '') {
+                                calcSect2FromPTODollars(this);
+                            }
+                        });
+                        $('#PTODollarsPaidSection2Week2').on('change', function () {
+                            if ($('#PTODollarsPaidSection2Week2').val() != '') {
+                                calcSect2FromPTODollars(this);
+                            }
+                        });
+                        $('#PTOHoursPaidSection2Week1').on('change', function () {
+                            if ($('#PTOHoursPaidSection2Week1').val() != '') {
+                                calcSect2FromPTOHours(this);
+                            }
+                        });
+                        $('#PTOHoursPaidSection2Week2').on('change', function () {
+                            if ($('#PTOHoursPaidSection2Week2').val() != '') {
+                                calcSect2FromPTOHours(this);
+                            }
+                        });
+                        $('#PTOPayHours').on('change', function () {
+                            if ($('#PTOPayHours').val() != '') {
+                                calculatePTOWithAdjustments();
+                            }
+                        });
+                        $('#PTOAddedByTimekeeper').on('change', function () {
+                            if ($('#PTOPayHours').val() != '') {
+                                calculatePTOWithAdjustments();
+                            }
+                        });
+                        $(window).keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                event.preventDefault();
+                                return false;
+                            }
+                        });
+                        const friday = 5; // for Friday
+                        const todayDate = moment();
+                        const today = todayDate.isoWeekday();
+                        var selectPayDate;
+
+                        if (today <= friday) {
+                            selectPayDate = todayDate.isoWeekday(friday);
+                        } else {
+                            selectPayDate = todayDate.add(1, 'weeks').isoWeekday(friday);
+                        }
+                        if (!$('#PayDecisionDt option[value="' + selectPayDate.format("MM/DD/YYYY") + '"]').prop("selected", true).length) {
+                            selectPayDate = selectPayDate.add(1, 'weeks').isoWeekday(friday);
+                            $('#PayDecisionDt option[value="' + selectPayDate.format("MM/DD/YYYY") + '"]').prop("selected", true);
+                        }
+
+                    },
+                    error: function (data) {
+                        alert($.parseJSON(data.responseText).message);
+                    }
+                });
+                return false;
+            }
+
+
+            function SubmitNew(form) {
+                $.validator.unobtrusive.parse(form);
+                if ($(form).valid()) {
+                    $.ajax({
+                        type: "POST",
+                        url: form.action,
+                        data: $(form).serialize(),
+                        success: function (data) {
+                            if (data.success) {
+                                $('#createNewModal').modal('hide');
+                                //pD.ajax.reload();
+                                sessionStorage.reloadAfterPageLoad = true;
+                                sessionStorage.message = data.message;
+                                location.reload();
+                            }
+                            else {
+                                alert(data.message);
+                            }
+                        },
+                        error: function (data) {
+                            alert($.parseJSON(data.responseText).message);
+                        }
+                    });
+                }
+                return false;
+            }
+
+            function EditRecord(id, empID, fteHour, fteStatus, rateofPay, stdElection, totalSTDPayHours) {
+                //debugger;
+                $.ajax({
+                    type: "GET",
+                    url: '/LogPayDecision/Edit',
+                    data: {
+                        id: id,
+                        empID: empID,
+                        fteHour: fteHour,
+                        fteStatus: fteStatus,
+                        rateofPay: rateofPay,
+                        stdElection: stdElection,
+                        totalSTDPayHours: totalSTDPayHours
+                    },
+                    success: function (data) {
+                        $(function () {
+                            $('#editModal').modal();
+                        });
+                        $('#modalWrapper').html(data);
+                        SetUpPickers();
+                        //if ($("#ReturnToWork").prop('checked') == true) {
+                        //    $('#showClockedInDt').show();
+                        //} else {
+                        //    $('#showClockedInDt').hide();
+                        //}
+                        var bankExhausted = false;
+                        var historic = false;
+                        var FTEHours = $.isNumeric(fteHour) ? parseFloat(fteHour) : 0;
+                        var totalSTDHours = $.isNumeric(totalSTDPayHours) ? parseFloat(totalSTDPayHours) : 0;
+                        var prevSTDPayHours = $.isNumeric($('#STDPayHours').val()) ? parseFloat($('#STDPayHours').val()) : 0;
+                        $('#TotalSTDPayHours').html(totalSTDHours.toFixed(2).toString());
+                        var COVIDBankHoursRemaining = FTEHours - totalSTDHours + prevSTDPayHours;
+                        $('#COVIDBankHoursRemaining').html(COVIDBankHoursRemaining.toFixed(2).toString());
+                        if (COVIDBankHoursRemaining <= 0) {
+                            $('#bankExhaustedWarning').html("COVID Bank has been exhausted. Please use Section 2 of this form.");
+                            bankExhausted = true;
+                        }
+                        calculateTotalPTO();
+                        calculatePTOWithAdjustments();
+                        if ($('#STDHoursPaidByNSH').val().trim()) {
+                            $('#STDHoursPaidByNSHGrossDiv').show()
+                            $('#COVIDBankPayGrossDiv').hide()
+                            $('#Pay2').hide()
+                            $("#hoursInTimeCard").prop('readonly', true);
+                            $("#STDPayHours").prop('readonly', true);
+                            $("#STDHoursPaidByNSH").prop('readonly', true);
+                            $('#PTODollarsPaidSection1').prop('readonly', true);
+                            $('#PTOHoursPaidSection1').prop('readonly', true);
+                            $("#COVIDPayTotalGrossDiv").hide();
+                            $('#bankExhaustedWarning').html("This pay decision was made prior to the 10/1/21 calculation change, and Pay Section 1 can not be edited. Please create a new entry.");
+                            historic = true;
+                        }
+
+                        if ($('#Week1Cigna').is(':checked')) {
+                            $('#Week1CignaHidden').val('true');
+                        } else {
+                            $('#Week1CignaHidden').val('false');
+                        }
+
+                        if ($('#Week2Cigna').is(':checked')) {
+                            $('#Week2CignaHidden').val('true');
+                        } else {
+                            $('#Week2CignaHidden').val('false');
+                        }
+                        $('#PayDecisionStatus').on('change', function () {
+                            if (this.value != "Yes") {
+                                disableAll(historic);
+                            }
+                            else {
+                                enableAll(bankExhausted,historic);
+                            }
+                        });
+                        $('#ReturnToWork').on('change', function () {
+                            if (this.checked) {
+                                $('#showClockedInDt').show();
+                            } else {
+                                $('#showClockedInDt').hide();
+                                $('#clearedToWorkDt').val('');
+                            }
+                        });
+                        $('#Week1Cigna').on('change', function () {
+                            if (this.checked) {
+                                $('#Week1CignaHidden').val('true');
+                            } else {
+                                $('#Week1CignaHidden').val('false');
+                            }
+                            if ($('#week1HoursInTimeCard').val().trim()) {
+                                $('#week1HoursInTimeCard').trigger("change");
+                            }
+
+                        });
+                        $('#Week2Cigna').on('change', function () {
+                            if (this.checked) {
+                                $('#Week2CignaHidden').val('true');
+                            } else {
+                                $('#Week2CignaHidden').val('false');
+                            }
+                            if ($('#week2HoursInTimeCard').val().trim()) {
+                                $('#week2HoursInTimeCard').trigger("change");
+                            }
+                        });
+                        $('#hoursInTimeCard').on('change', function () {
+                            if ($('#hoursInTimeCard').val() != '') {
+                                $('#bankExhaustedWarning').html("");
+                                calcSect1FromTimeCard();
+                            }
+                        });
+                        $('#STDPayHours').on('change', function () {
+                            if ($('#STDPayHours').val() != '') {
+                                $('#bankExhaustedWarning').html("");
+                                calcSect1FromPayHours();
+                            }
+                        });
+                        $('#COVIDBankPayGross').on('change', function () {
+                            if ($('#COVIDBankPayGross').val() != '') {
+                                $('#bankExhaustedWarning').html("");
+                                calcSect1FromBankPay();
+                            }
+                        });
+                        $('#PTOHoursPaidSection1').on('change', function () {
+                            if ($('#PTOHoursPaidSection1').val() != '') {
+                                $('#bankExhaustedWarning').html("");
+                                calcSect1FromPTOHours();
+                            }
+                        });
+                        $('#PTODollarsPaidSection1').on('change', function () {
+                            if ($('#PTODollarsPaidSection1').val() != '') {
+                                $('#bankExhaustedWarning').html("");
+                                calcSect1FromPTODollars();
+                            }
+                        });
+                        $('#week1HoursInTimeCard').on('change', function () {
+                            if ($('#week1HoursInTimeCard').val() != '') {
+                                calcSect2FromTimeCard(this);
+                            }
+                        });
+                        $('#week2HoursInTimeCard').on('change', function () {
+                            if ($('#week2HoursInTimeCard').val() != '') {
+                                calcSect2FromTimeCard(this);
+                            }
+                        });
+
+                        $('#week1COVIDPayHours').on('change', function () {
+                            if ($('#week1COVIDPayHours').val() != '') {
+                                calcSect2FromPayHours(this);
+                            }
+                        });
+                        $('#week2COVIDPayHours').on('change', function () {
+                            if ($('#week2COVIDPayHours').val() != '') {
+                                calcSect2FromPayHours(this);
+                            }
+                        });
+                        $('#week1COVIDPayGross').on('change', function () {
+                            if ($('#week1COVDPayGross').val() != '') {
+                                calcSect2FromCOVIDPay(this);
+                            }
+                        });
+                        $('#week2COVIDPayGross').on('change', function () {
+                            if ($('#week2COVDPayGross').val() != '') {
+                                calcSect2FromCOVIDPay(this);
+                            }
+                        });
+                        $('#PTODollarsPaidSection2Week1').on('change', function () {
+                            if ($('#PTODollarsPaidSection2Week1').val() != '') {
+                                calcSect2FromPTODollars(this);
+                            }
+                        });
+                        $('#PTODollarsPaidSection2Week2').on('change', function () {
+                            if ($('#PTODollarsPaidSection2Week2').val() != '') {
+                                calcSect2FromPTODollars(this);
+                            }
+                        });
+                        $('#PTOHoursPaidSection2Week1').on('change', function () {
+                            if ($('#PTOHoursPaidSection2Week1').val() != '') {
+                                calcSect2FromPTOHours(this);
+                            }
+                        });
+                        $('#PTOHoursPaidSection2Week2').on('change', function () {
+                            if ($('#PTOHoursPaidSection2Week2').val() != '') {
+                                calcSect2FromPTOHours(this);
+                            }
+                        });
+                        $('#PTOPayHours').on('change', function () {
+                            if ($('#PTOPayHours').val() != '') {
+                                calculatePTOWithAdjustments();
+                            }
+                        });
+                        $('#PTOAddedByTimekeeper').on('change', function () {
+                            if ($('#PTOPayHours').val() != '') {
+                                calculatePTOWithAdjustments();
+                            }
+                        });
+                        $(window).keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                event.preventDefault();
+                                return false;
+                            }
+                        });
+
+                        $('#PayDecisionDt option[value="' + moment($('#selPayDecisionDt').val()).format('MM/DD/YYYY') + '"]').prop("selected", true);
+                    },
+                    error: function (data) {
+                        alert($.parseJSON(data.responseText).message);
+                    }
+                });
+                return false;
+            }
+
+            function SubmitEdit(form) {
+                $.validator.unobtrusive.parse(form);
+                if ($(form).valid()) {
+                    $.ajax({
+                        type: "POST",
+                        url: form.action,
+                        data: $(form).serialize(),
+                        success: function (data) {
+                            if (data.success) {
+                                $('#editModal').modal('hide');
+                                //pD.ajax.reload();
+                                sessionStorage.reloadAfterPageLoad = true;
+                                sessionStorage.message = data.message;
+                                location.reload();
+                            }
+                            else {
+                                alert(data.message);
+                            }
+                        },
+                        error: function (data) {
+                            alert($.parseJSON(data.responseText).message);
+                        }
+                    });
+                }
+                return false;
+            }
+
+            function InactivateRecord(id) {
+                if (confirm('Are you sure you want to delete this request?')) {
+                    $.ajax({
+                        type: "GET",
+                        url: '/LogPayDecision/Inactivate',
+                        data: { id: id },
+                        success: function (data) {
+                            if (data.success) {
+                                //pD.ajax.reload();
+                                sessionStorage.reloadAfterPageLoad = true;
+                                sessionStorage.message = data.message;
+                                location.reload();
+                            }
+                            else {
+                                alert(data.message);
+                            }
+                        },
+                        error: function (data) {
+                            alert($.parseJSON(data.responseText).message);
+                        }
+                    });
+                }
+                return false;
+            }
+
+            $(function () {
+                //debugger;
+                if (null != sessionStorage.reloadAfterPageLoad && sessionStorage.reloadAfterPageLoad == "true") {
+                    $.notify(sessionStorage.message, {
+                        globalPosition: "top center",
+                        className: "success"
+                    });
+                    sessionStorage.reloadAfterPageLoad = false;
+                }
+            });
+        </script>
+    }
+}
+
+

@@ -1,0 +1,247 @@
+﻿@model CovidPayTracking.Models.IndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>HotLine Log Records</h2>
+
+<hr />
+
+@*<div id="modalWrapper">
+
+    </div>*@
+
+    @using (Html.BeginForm())
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Search By  Date of Call:
+                </h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="container">
+                    <div class="row">
+                        &nbsp;
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="form-group">
+                                <div class="input-group date" id="divFromDt">
+                                    @Html.TextBoxFor(f => f.SearchFromDate, htmlAttributes: new { @class = "form-control no-max-width", @placeholder = "FROM", @id = "fromDt" })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="form-group">
+                                <div class="input-group date" id="divToDt">
+                                    @Html.TextBoxFor(f => f.SearchToDate, htmlAttributes: new { @class = "form-control no-max-width", @placeholder = "TO", @id = "toDt" })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12 pull-left">
+                            <div class="form-group">
+                                <input class="btn btn-default" type="submit" value="Update Table" name="action:Filter" />
+                                @*<span style="padding-left:10px"><input class="btn btn-default" type="submit" value="Export" name="action:Export" /></span>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <table id="hotlinelog-data-table" class="table table-striped table-bordered" style="width:100%;">
+            <thead></thead>
+            <tfoot></tfoot>
+        </table>
+
+        @section Scripts
+{
+            <script type="text/javascript">
+            var oTable;
+            $(document).ready(function () {
+                $("#divFromDt").datetimepicker({
+                    format: 'MM-DD-YYYY'
+                });
+
+                ////Get the value of From Date
+                //$('#divFromDt').on('focusout dp.change', function (e) {
+                //    var value = $("#fromDt").val();
+                //    if (value != null && value != '') {
+                //        var firstDate = moment(value, "MM-DD-YYYY").day(0).format("MM-DD-YYYY");
+                //        $("#fromDt").val(firstDate);
+                //    } else {
+                //        $("#fromDt").val('');
+                //    }
+                //});
+                $("#divToDt").datetimepicker({
+                    format: 'MM-DD-YYYY'
+                });
+
+                ////Get the value of To Date
+                //$('#divToDt').on('focusout dp.change', function (e) {
+                //    var value = $("#toDt").val();
+                //    if (value != null && value != '') {
+                //        var firstDate = moment(value, "MM-DD-YYYY").day(0).format("MM-DD-YYYY");
+                //        $("#toDt").val(firstDate);
+                //    } else {
+                //        $("#toDt").val('');
+                //    }
+                //});
+
+                oTable = $('#hotlinelog-data-table').removeAttr('width').DataTable({
+                    "scrollX": true,
+                    "scrollCollapse": true,
+                    "serverSide": true,
+                    "processing": true,
+                    "dom": 'lrtip',
+                    "scrollY": '37vh',
+                    "autoWidth": false,
+                    //"fixedHeader": true,
+                    "fixedColumns":
+                    {
+                        "leftColumns":"1"
+                    },
+                    "order": [[1, 'asc']],
+                    "ajax": {
+                        "url": "@Url.Action("Get", "HotlineLog")",
+                        "type": "POST",
+                        "datatytpe": "json", "data": function (data) {
+                            var fromDt = $('#fromDt').val();
+                            var toDt = $('#toDt').val();
+                            //var viewAll = "Yes";
+                            data.fromDt = fromDt;
+                            data.toDt = toDt;
+                            //data.viewAll = viewAll;
+                        }
+                    },
+                    "columns": [
+                        {
+                            "title": "", "data": "ID", "width": "55px",
+                            "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                $(nTd).html("<a href = '/HotlineLog/Details/" + oData.ID + "' >Details</a> | <a href='/HotlineLog/ViewPayDecisions/" + oData.ID + "'>Pay Decisions</a>");
+                            },
+                            "orderable": false,
+                            "searchable": false
+                        },
+                        { "title": "Employee ID", "data": "EmployeeID", "searchable": true, "width": "105px" },
+                        { "title": "Employee First Name", "data": "EmployeeFirstName", "searchable": true, "width": "70px" },
+                        { "title": "Employee Last Name", "data": "EmployeeLastName", "searchable": true, "width": "75px" },
+                        {
+                            "title": "Date of Call", "data": "DateOfCall", "searchable": true, "width": "70px",
+                            "render": function (data) {
+                                return moment(data).format("MM/DD/YYYY");
+                            }
+                        },
+
+                        { "title": "Operator", "data": "Operator", "searchable": true, "width": "125px" },
+
+                        {
+                            "title": "FTE Status", "data": "FTEStatus", "searchable": true, "width": "70px"
+                            //,
+                            //"render": function (data) {
+                            //    return parseFloat(data).toFixed(2);
+                            //}
+                        },
+                        { "title": "Cleared To Work?", "data": "ClearedToWork", "searchable": true, "width": "125px" },
+                        {
+                            "title": "Notes", "data": "Notes", "searchable": true, "width": "250px",
+                            "render": function (data) {
+                                return (data != null) ? data.replace("\r\n", "<br>").replace("\n", "<br>") + "</span>" : data;
+                            }
+                        },
+                        {
+                            "title": "Last Day Worked", "data": "LastDayWorked", "searchable": true, "width": "70px",
+                            "render": function (data) {
+                                return moment(data).format("MM/DD/YYYY");
+                            }
+                        },
+                        {
+                            "title": "Return To Work Date", "data": "ReturnToWorkDt", "searchable": true, "width": "70px",
+                            "render": function (data) {
+                                return moment(data).format("MM/DD/YYYY");
+                            }
+                        },
+                        { "title": "STD Election", "data": "STDElection", "searchable": true, "width": "70px" },
+                        { "title": "Rate Of Pay", "data": "RateOfPay", "searchable": true, "width": "70px" },
+                        { "title": "Hours Previously Paid", "data": "HoursWorkedLastPayPeriod", "searchable": true, "width": "70px" },
+                        { "title": "FTE Hours", "data": "FTEHours", "searchable": true, "width": "70px" },
+                        { "title": "Hours Left in COVID Bank", "data": "DiffHoursToFTE", "searchable": true, "width": "70px" },
+
+                        {
+                            "title": "Created Date", "data": "CreatedDtTm", "searchable": true, "width": "70px",
+                            "render": function (data) {
+                                return moment(data).format("MM/DD/YYYY");
+                            }
+                        },
+                        { "title": "Modified Date", "data": "ModifiedDt", "searchable": true, "width": "70px" },
+                        { "title": "Modified By", "data": "Modifiedby", "searchable": true, "width": "70px" }
+                    ],
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]]
+                });
+                //yadcf.init(oTable, [{
+                //    column_number: 1,
+                //    filter_type: 'text'
+                //}
+                //    //, {
+                //    //column_number: 8,
+                //    //filter_type: 'text'
+                //    //}, {
+                //    //    column_number: 18,
+                //    //    filter_type: 'text'
+                //    //}, {
+                //    //    column_number: 4,
+                //    //    filter_type: 'text'
+                //    //}, {
+                //    //    column_number: 5,
+                //    //    filter_type: 'text'
+                //    //}
+                //]);
+            });
+
+            //function EditNotes(requestId) {
+            //    $.ajax({
+            //        url: '/Staffing/EditNotes/' + requestId,
+            //        success: function (data) {
+            //            $(function () {
+            //                $('#editNotesModal').modal();
+            //            });
+            //            $('#modalWrapper').html(data);
+            //        }
+            //    });
+            //}
+
+            //function SubmitForm(form) {
+            //    $.validator.unobtrusive.parse(form);
+            //    if ($(form).valid()) {
+            //        $.ajax({
+            //            type: "POST",
+            //            url: form.action,
+            //            data: $(form).serialize(),
+            //            success: function (data) {
+            //                if (data.success) {
+            //                    $('#editNotesModal').modal('hide');
+            //                    oTable.ajax.reload();
+            //                    $.notify(data.message, {
+            //                        globalPosition: "top center",
+            //                        className: "success"
+            //                    })
+            //                }
+            //            }
+            //        });
+            //    }
+            //    return false;
+            //}
+            </script>
+        }
+    }

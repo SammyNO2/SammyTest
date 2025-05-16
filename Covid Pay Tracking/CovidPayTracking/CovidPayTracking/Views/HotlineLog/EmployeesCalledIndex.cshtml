@@ -1,0 +1,254 @@
+﻿@model CovidPayTracking.Models.HotLineLogViewModel
+@{
+    ViewBag.Title = "Index - Employees Called";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var PayReviewStatusDDL = new List<SelectListItem>
+{
+        new SelectListItem {Text = "All", Value = "All"},
+        new SelectListItem {Text = "Auto-Completed", Value = "Auto-Completed"},
+        new SelectListItem {Text = "Complete", Value = "Complete"},
+        new SelectListItem {Text = "New", Value = "New"}
+    };
+}
+
+<div class="row">
+    &nbsp;
+</div>
+
+<div id="modalWrapper">
+    @* Inject form here *@
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-sm-1">
+
+        </div>
+        <div class="col-sm-10">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Search By:
+                    </h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="container">
+                        <div class="row">
+                            &nbsp;
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-12">
+                                <label for="inputFrom" class="col-form-label">Date of Call:</label>
+                            </div>
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group date" id="divFromDt">
+                                        @Html.TextBoxFor(f => f.SelectedFromDate, htmlAttributes: new { @class = "form-control no-max-width", @placeholder = "FROM", @id = "fromDt" })
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group date" id="divToDt">
+                                        @Html.TextBoxFor(f => f.SelectedToDate, htmlAttributes: new { @class = "form-control no-max-width", @placeholder = "TO", @id = "toDt" })
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-12">
+                                <label for="inputFrom" class="col-form-label">Employee ID:</label>
+                            </div>
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(f => f.EmplIDFrom, htmlAttributes: new { @class = "form-control no-max-width", @placeholder = "FROM", @id = "fromEmplID" })
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(f => f.EmplIDTo, htmlAttributes: new { @class = "form-control no-max-width", @placeholder = "TO", @id = "toEmplID" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-12">
+                                <label class="col-form-label">Pay Review Status:</label>
+                            </div>
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="form-group">
+                                    @Html.DropDownListFor(f => f.SelectedPayReviewStatus, PayReviewStatusDDL, htmlAttributes: new { @class = "form-control"})
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-2 col-xs-12 pull-left">
+                                <div class="form-group">
+                                    <input class="btn btn-default" type="submit" value="Search" name="action:Search" />
+                                    @*<span style="padding-left:10px"><input class="btn btn-default" type="submit" value="Export" name="action:Export" /></span>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1">
+
+        </div>
+        <div class="col-sm-10">
+            <table id="employeescalled-data-table" class="table table-striped table-bordered" style="width:100%;">
+                <thead></thead>
+                <tfoot></tfoot>
+            </table>
+        </div>
+        <div class="col-sm-1">
+
+        </div>
+    </div>
+
+    @section Scripts
+{
+        <script type="text/javascript">
+            //debugger;
+            var oTable;
+            $(document).ready(function () {
+                $("#divFromDt").datetimepicker({
+                    format: 'MM-DD-YYYY'
+                });
+
+                $("#divToDt").datetimepicker({
+                    format: 'MM-DD-YYYY'
+                });
+
+
+                oTable = $('#employeescalled-data-table').removeAttr('width').DataTable({
+                    "scrollX": true,
+                    "scrollCollapse": true,
+                    "serverSide": true,
+                    "processing": true,
+                    "dom": 'lrtip',
+                    "scrollY": '37vh',
+                    "order": [[1, 'asc']],
+                    "ajax": {
+                        "url": "@Url.Action("GetDistinctEmployeesCalled", "HotlineLog")",
+                        "type": "POST",
+                        "datatytpe": "json", "data": function (data) {
+                            var fromDt = $('#fromDt').val();
+                            var toDt = $('#toDt').val();
+                            var fromEmplID = $('#fromEmplID').val();
+                            var toEmplID = $('#toEmplID').val();
+                            var payRevStatus = $('#SelectedPayReviewStatus').find(":selected").text();
+                            data.fromDt = fromDt;
+                            data.toDt = toDt;
+                            data.fromEmplID = fromEmplID;
+                            data.toEmplID = toEmplID;
+                            data.payRevStatus = payRevStatus;
+                        }
+                    },
+                    "columns": [
+                        {
+                            "title": "", "data": "ID", "width": "55px",
+                            "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                $(nTd).html("<a href = '/LogPayDecision/GetLogPayDecision/" + oData.EmployeeID + "' >Details</a>");
+                            },
+                            "orderable": false,
+                            "searchable": false
+                        },
+                        {
+                            "title": "Employee ID",
+                            "data": "EmployeeID",
+                            "searchable": true,
+                            "width": "105px",
+                            "render": function (data) {
+                                return (data != null) ? data : '';
+                            }
+                        },
+                        { "title": "Employee First Name", "data": "EmployeeFirstName", "searchable": true, "orderable": true, "width": "70px" },
+                        { "title": "Employee Last Name", "data": "EmployeeLastName", "searchable": true, "orderable": true, "width": "70px" },
+                        { "title": "FTE Status", "data": "FTEStatus", "searchable": true, "orderable": true, "width": "20px" },
+                       // { "title": "Rate Of Pay", "data": "RateOfPay", "searchable": true, "width": "70px" },
+                        { "title": "FTE Hours", "data": "FTEHours", "searchable": true, "orderable": true, "width": "50px" },
+                        { "title": "Total STD Hours Paid", "data": "TotalSTDPayHours", "searchable": true, "orderable": true, "width": "70px" },
+                        { "title": "COVID Bank Pay- Gross (After 10/1/21)", "data": "COVIDPayTotalGross", "searchable": true, "orderable": true, "width": "70px" },
+                        { "title": "Total STD Hours Paid- Gross (Prior to 10/1/21)", "data": "TotalSTDHoursPaidByNSHGross", "searchable": true, "orderable": true, "width": "70px" },
+                        //{ "title": "Overall Review Status", "data": "RecordStatus", "searchable": true, "width": "70px" },
+                        { "title": "Pay Review Status", "data": "PayReviewStatus", "searchable": true, "orderable": true, "width": "70px" },
+                        {
+                            "title": "This Year STD Election",
+                            "defaultContent": "",
+                            "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                var FTE_float = parseFloat(oData.FTEStatus);
+                                var STD_ThisYear = parseFloat(oData.STDElection_ThisYear).toFixed(2);
+                                if (oData.STDElection_ThisYear != null && oData.STDElection_ThisYear.toUpperCase() == 'RESOURCE' && FTE_float > 0 && FTE_float <= 0.5) {
+                                    return $(nTd).html("0.50")
+                                }
+                                else if (STD_ThisYear == null || isNaN(STD_ThisYear)) {
+
+                                    return $(nTd).html(oData.STDElection_ThisYear)
+                                }
+                                else {
+                                    return $(nTd).html(STD_ThisYear.toString())
+                                }
+                            },
+                            "width": "55px",
+                            "searchable": true,
+                            "orderable": true
+                        },
+                        {
+                            "title": "Previous Year STD Election",
+                            "defaultContent": "",
+                            "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                var STD_PrevYear = parseFloat(oData.STDElection_PrevYear).toFixed(2);
+                                if (STD_PrevYear == null || isNaN(STD_PrevYear)) {
+                                    return $(nTd).html(oData.STDElection_PrevYear)
+                                }
+                                else {
+                                    return $(nTd).html(STD_PrevYear.toString())
+                                }
+                            },
+                            "width": "55px",
+                            "searchable": true,
+                            "orderable": true
+                        }
+                    ],
+                    "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]]
+                });
+                yadcf.init(oTable,
+                    [{
+                        column_number: 1,
+                        filter_type: 'text'
+                    },
+                    {
+                        column_number: 9,
+                        filter_type:'text'
+                    },
+                    {
+                        column_number: 10,
+                        filter_type: 'text'
+                    },
+                    {
+                        column_number: 11,
+                        filter_type: 'text'
+                    }
+                    ]
+                );
+            });
+        </script>
+    }
+}

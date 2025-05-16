@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HotLineLogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApplicationLogs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShortDescription" Type="varchar" MaxLength="500" />
+          <Property Name="LongDescription" Type="varchar" MaxLength="4000" />
+          <Property Name="CreatedDt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CovidCases">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="varchar" MaxLength="10" />
+          <Property Name="CaseNote" Type="varchar" MaxLength="255" />
+          <Property Name="MadeWholeYN" Type="varchar" MaxLength="2" />
+          <Property Name="MadeWhole" Type="bit" Nullable="false" />
+          <Property Name="CreatedDt" Type="datetime" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeMerit">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeeFirstName" Type="varchar" MaxLength="255" />
+          <Property Name="HourlyPayRate" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="CombinedFTEStatus" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="EmployeeLastName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="EmployeeSTDElection">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" />
+          <Property Name="SSN" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="StructureGroup" Type="varchar" MaxLength="2000" />
+          <Property Name="STDElection" Type="varchar" MaxLength="500" />
+          <Property Name="STDElectionPercent" Type="varchar" MaxLength="50" />
+          <Property Name="STDReview" Type="varchar" MaxLength="100" />
+          <Property Name="STDEffectiveDt" Type="datetime" />
+          <Property Name="STD2Election" Type="varchar" MaxLength="500" />
+          <Property Name="STD2ElectionPercent" Type="varchar" MaxLength="50" />
+          <Property Name="TotalSTDElectionPercent" Type="varchar" MaxLength="50" />
+          <Property Name="BenefitStatus" Type="varchar" MaxLength="50" />
+          <Property Name="TotalSTDElection2020" Type="varchar" MaxLength="50" />
+          <Property Name="TotalSTDElection2021" Type="varchar" MaxLength="50" />
+          <Property Name="TotalSTDElectionPrevYear" Type="varchar" MaxLength="50" />
+          <Property Name="TotalSTDElectionThisYear" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HotlineLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeeFirstName" Type="varchar" MaxLength="100" />
+          <Property Name="EmployeeLastName" Type="varchar" MaxLength="100" />
+          <Property Name="DateOfCall" Type="date" />
+          <Property Name="Operator" Type="varchar" MaxLength="255" />
+          <Property Name="FTEStatus" Type="varchar" MaxLength="50" />
+          <Property Name="ClearedToWork" Type="varchar" MaxLength="255" />
+          <Property Name="Notes" Type="varchar" MaxLength="2000" />
+          <Property Name="LastDayWorked" Type="date" />
+          <Property Name="ReturnToWorkDt" Type="date" />
+          <Property Name="STDElection_2020" Type="varchar" MaxLength="50" />
+          <Property Name="RateOfPay" Type="varchar" MaxLength="50" />
+          <Property Name="HoursPreviouslyPaid" Type="varchar" MaxLength="50" />
+          <Property Name="PayPeriodPayDate" Type="datetime" />
+          <Property Name="FTEHours" Type="varchar" MaxLength="50" />
+          <Property Name="DiffHoursToFTE" Type="varchar" MaxLength="50" />
+          <Property Name="RawDataNo" Type="int" />
+          <Property Name="NotesFromBenefits" Type="varchar" MaxLength="2000" />
+          <Property Name="CreatedDt" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDt" Type="datetime" />
+          <Property Name="Modifiedby" Type="varchar" MaxLength="50" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="STDElection_2021" Type="varchar" MaxLength="50" />
+          <Property Name="RecordStatus" Type="varchar" MaxLength="50" />
+          <Property Name="PayReviewStatus" Type="varchar" MaxLength="50" />
+          <Property Name="STDElection_ThisYear" Type="varchar" MaxLength="50" />
+          <Property Name="STDElection_PrevYear" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PayDecision">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotlineLogID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="varchar" MaxLength="50" />
+          <Property Name="PayDecisionStatus" Type="varchar" MaxLength="255" />
+          <Property Name="ClockedIn_ClearedToWork_Dt" Type="varchar" MaxLength="50" />
+          <Property Name="STDPayDtTo" Type="date" />
+          <Property Name="STDPayDtFrom" Type="date" />
+          <Property Name="STDPayHours" Type="varchar" MaxLength="255" />
+          <Property Name="PayDecisionDt" Type="date" />
+          <Property Name="STDHoursPaidByNSHGross" Type="varchar" MaxLength="255" />
+          <Property Name="PTOAdjustment" Type="varchar" MaxLength="255" />
+          <Property Name="ReverseRegHours" Type="varchar" MaxLength="255" />
+          <Property Name="Notes" Type="varchar" MaxLength="1000" />
+          <Property Name="SentToCigna" Type="varchar" MaxLength="255" />
+          <Property Name="STDPayDates" Type="varchar" MaxLength="255" />
+          <Property Name="HotLineLogPayDecisionTempID" Type="int" />
+          <Property Name="CreatedDt" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="10" />
+          <Property Name="ModifiedDt" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="10" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="ReturnToWork" Type="bit" Nullable="false" />
+          <Property Name="HoursInTimeCard" Type="varchar" MaxLength="50" />
+          <Property Name="MadeWhole" Type="bit" Nullable="false" />
+          <Property Name="COVIDBankPayGross" Type="varchar" MaxLength="50" />
+          <Property Name="Week1Cigna" Type="bit" />
+          <Property Name="Week2Cigna" Type="bit" />
+          <Property Name="Week1TimeCardHours" Type="varchar" MaxLength="50" />
+          <Property Name="Week2TimeCardHours" Type="varchar" MaxLength="50" />
+          <Property Name="Week1COVIDPayGross" Type="varchar" MaxLength="50" />
+          <Property Name="Week2COVIDPayGross" Type="varchar" MaxLength="50" />
+          <Property Name="COVIDPayTotalGross" Type="varchar" MaxLength="50" />
+          <Property Name="PTOHoursPaid" Type="varchar" MaxLength="50" />
+          <Property Name="PTODollarsPaid" Type="varchar" MaxLength="50" />
+          <Property Name="PTOHoursPaidWeek1" Type="varchar" MaxLength="50" />
+          <Property Name="PTODollarsPaidWeek1" Type="varchar" MaxLength="50" />
+          <Property Name="PTOHoursPaidWeek2" Type="varchar" MaxLength="50" />
+          <Property Name="PTODollarsPaidWeek2" Type="varchar" MaxLength="50" />
+          <Property Name="PTOPayHours" Type="varchar" MaxLength="50" />
+          <Property Name="PTOAddedByTimekeeper" Type="varchar" MaxLength="50" />
+          <Property Name="TotalPTOAdjustment" Type="varchar" MaxLength="50" />
+          <Property Name="Week1COVIDPayHours" Type="varchar" MaxLength="50" />
+          <Property Name="Week2COVIDPayHours" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PayDecisionDates">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PayDate" Type="date" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HotLineLogModelStoreContainer">
+          <EntitySet Name="ApplicationLogs" EntityType="Self.ApplicationLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CovidCases" EntityType="Self.CovidCases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeMerit" EntityType="Self.EmployeeMerit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeSTDElection" EntityType="Self.EmployeeSTDElection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotlineLog" EntityType="Self.HotlineLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayDecision" EntityType="Self.PayDecision" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayDecisionDates" EntityType="Self.PayDecisionDates" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotLineLogModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ApplicationLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShortDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LongDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="HotLineLogEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplicationLogs" EntityType="Self.ApplicationLog" />
+          <EntitySet Name="EmployeeMerits" EntityType="HotLineLogModel.EmployeeMerit" />
+          <EntitySet Name="PayDecisions" EntityType="HotLineLogModel.PayDecision" />
+          <EntitySet Name="CovidCases" EntityType="HotLineLogModel.CovidCases" />
+          <EntitySet Name="PayDecisionDates" EntityType="HotLineLogModel.PayDecisionDate" />
+          <EntitySet Name="EmployeeSTDElections" EntityType="HotLineLogModel.EmployeeSTDElection" />
+          <EntitySet Name="HotlineLogs" EntityType="HotLineLogModel.HotlineLog" />
+        </EntityContainer>
+        <EntityType Name="EmployeeMerit">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HourlyPayRate" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="EmployeeFirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CombinedFTEStatus" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="EmployeeLastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PayDecision">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotlineLogID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PayDecisionStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ClockedIn_ClearedToWork_Dt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STDPayDtTo" Type="DateTime" Precision="0" />
+          <Property Name="STDPayDtFrom" Type="DateTime" Precision="0" />
+          <Property Name="STDPayHours" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PayDecisionDt" Type="DateTime" Precision="0" />
+          <Property Name="STDHoursPaidByNSHGross" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PTOAdjustment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ReverseRegHours" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="SentToCigna" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="STDPayDates" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="HotLineLogPayDecisionTempID" Type="Int32" />
+          <Property Name="CreatedDt" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDt" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="ReturnToWork" Type="Boolean" Nullable="false" />
+          <Property Name="HoursInTimeCard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MadeWhole" Type="Boolean" Nullable="false" />
+          <Property Name="COVIDBankPayGross" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Week1Cigna" Type="Boolean" />
+          <Property Name="Week2Cigna" Type="Boolean" />
+          <Property Name="Week1TimeCardHours" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Week2TimeCardHours" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Week1COVIDPayHours" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Week2COVIDPayHours" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Week1COVIDPayGross" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Week2COVIDPayGross" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COVIDPayTotalGross" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PTOHoursPaid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PTODollarsPaid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PTOHoursPaidWeek1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PTODollarsPaidWeek1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PTOHoursPaidWeek2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PTODollarsPaidWeek2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PTOPayHours" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PTOAddedByTimekeeper" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalPTOAdjustment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CovidCases">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CaseNote" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MadeWholeYN" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="MadeWhole" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDt" Type="DateTime" Precision="3" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PayDecisionDate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PayDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeeSTDElection">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalSTDElectionPrevYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TotalSTDElectionThisYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="HotlineLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeFirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeLastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfCall" Type="DateTime" Precision="0" />
+          <Property Name="Operator" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FTEStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ClearedToWork" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Notes" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="LastDayWorked" Type="DateTime" Precision="0" />
+          <Property Name="ReturnToWorkDt" Type="DateTime" Precision="0" />
+          <Property Name="STDElection_2020" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RateOfPay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HoursPreviouslyPaid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PayPeriodPayDate" Type="DateTime" Precision="3" />
+          <Property Name="FTEHours" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DiffHoursToFTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RawDataNo" Type="Int32" />
+          <Property Name="NotesFromBenefits" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDt" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedDt" Type="DateTime" Precision="3" />
+          <Property Name="Modifiedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="STDElection_2021" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RecordStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PayReviewStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STDElection_ThisYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STDElection_PrevYear" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HotLineLogModelStoreContainer" CdmEntityContainer="HotLineLogEntities">
+          <EntitySetMapping Name="ApplicationLogs">
+            <EntityTypeMapping TypeName="HotLineLogModel.ApplicationLog">
+              <MappingFragment StoreEntitySet="ApplicationLogs">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="LongDescription" ColumnName="LongDescription" />
+                <ScalarProperty Name="CreatedDt" ColumnName="CreatedDt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeMerits">
+            <EntityTypeMapping TypeName="HotLineLogModel.EmployeeMerit">
+              <MappingFragment StoreEntitySet="EmployeeMerit">
+                <ScalarProperty Name="EmployeeLastName" ColumnName="EmployeeLastName" />
+                <ScalarProperty Name="CombinedFTEStatus" ColumnName="CombinedFTEStatus" />
+                <ScalarProperty Name="EmployeeFirstName" ColumnName="EmployeeFirstName" />
+                <ScalarProperty Name="HourlyPayRate" ColumnName="HourlyPayRate" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayDecisions">
+            <EntityTypeMapping TypeName="HotLineLogModel.PayDecision">
+              <MappingFragment StoreEntitySet="PayDecision">
+                <ScalarProperty Name="TotalPTOAdjustment" ColumnName="TotalPTOAdjustment" />
+                <ScalarProperty Name="PTOAddedByTimekeeper" ColumnName="PTOAddedByTimekeeper" />
+                <ScalarProperty Name="PTOPayHours" ColumnName="PTOPayHours" />
+                <ScalarProperty Name="PTODollarsPaidWeek2" ColumnName="PTODollarsPaidWeek2" />
+                <ScalarProperty Name="PTOHoursPaidWeek2" ColumnName="PTOHoursPaidWeek2" />
+                <ScalarProperty Name="PTODollarsPaidWeek1" ColumnName="PTODollarsPaidWeek1" />
+                <ScalarProperty Name="PTOHoursPaidWeek1" ColumnName="PTOHoursPaidWeek1" />
+                <ScalarProperty Name="PTODollarsPaid" ColumnName="PTODollarsPaid" />
+                <ScalarProperty Name="PTOHoursPaid" ColumnName="PTOHoursPaid" />
+                <ScalarProperty Name="COVIDPayTotalGross" ColumnName="COVIDPayTotalGross" />
+                <ScalarProperty Name="Week2COVIDPayGross" ColumnName="Week2COVIDPayGross" />
+                <ScalarProperty Name="Week1COVIDPayGross" ColumnName="Week1COVIDPayGross" />
+                <ScalarProperty Name="Week2COVIDPayHours" ColumnName="Week2COVIDPayHours" />
+                <ScalarProperty Name="Week1COVIDPayHours" ColumnName="Week1COVIDPayHours" />
+                <ScalarProperty Name="Week2TimeCardHours" ColumnName="Week2TimeCardHours" />
+                <ScalarProperty Name="Week1TimeCardHours" ColumnName="Week1TimeCardHours" />
+                <ScalarProperty Name="Week2Cigna" ColumnName="Week2Cigna" />
+                <ScalarProperty Name="Week1Cigna" ColumnName="Week1Cigna" />
+                <ScalarProperty Name="COVIDBankPayGross" ColumnName="COVIDBankPayGross" />
+                <ScalarProperty Name="MadeWhole" ColumnName="MadeWhole" />
+                <ScalarProperty Name="HoursInTimeCard" ColumnName="HoursInTimeCard" />
+                <ScalarProperty Name="ReturnToWork" ColumnName="ReturnToWork" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDt" ColumnName="ModifiedDt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDt" ColumnName="CreatedDt" />
+                <ScalarProperty Name="HotLineLogPayDecisionTempID" ColumnName="HotLineLogPayDecisionTempID" />
+                <ScalarProperty Name="STDPayDates" ColumnName="STDPayDates" />
+                <ScalarProperty Name="SentToCigna" ColumnName="SentToCigna" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ReverseRegHours" ColumnName="ReverseRegHours" />
+                <ScalarProperty Name="PTOAdjustment" ColumnName="PTOAdjustment" />
+                <ScalarProperty Name="STDHoursPaidByNSHGross" ColumnName="STDHoursPaidByNSHGross" />
+                <ScalarProperty Name="PayDecisionDt" ColumnName="PayDecisionDt" />
+                <ScalarProperty Name="STDPayHours" ColumnName="STDPayHours" />
+                <ScalarProperty Name="STDPayDtFrom" ColumnName="STDPayDtFrom" />
+                <ScalarProperty Name="STDPayDtTo" ColumnName="STDPayDtTo" />
+                <ScalarProperty Name="ClockedIn_ClearedToWork_Dt" ColumnName="ClockedIn_ClearedToWork_Dt" />
+                <ScalarProperty Name="PayDecisionStatus" ColumnName="PayDecisionStatus" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="HotlineLogID" ColumnName="HotlineLogID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CovidCases">
+            <EntityTypeMapping TypeName="HotLineLogModel.CovidCases">
+              <MappingFragment StoreEntitySet="CovidCases">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="CreatedDt" ColumnName="CreatedDt" />
+                <ScalarProperty Name="MadeWhole" ColumnName="MadeWhole" />
+                <ScalarProperty Name="MadeWholeYN" ColumnName="MadeWholeYN" />
+                <ScalarProperty Name="CaseNote" ColumnName="CaseNote" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayDecisionDates">
+            <EntityTypeMapping TypeName="HotLineLogModel.PayDecisionDate">
+              <MappingFragment StoreEntitySet="PayDecisionDates">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="PayDate" ColumnName="PayDate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeSTDElections">
+            <EntityTypeMapping TypeName="HotLineLogModel.EmployeeSTDElection">
+              <MappingFragment StoreEntitySet="EmployeeSTDElection">
+                <ScalarProperty Name="TotalSTDElectionThisYear" ColumnName="TotalSTDElectionThisYear" />
+                <ScalarProperty Name="TotalSTDElectionPrevYear" ColumnName="TotalSTDElectionPrevYear" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotlineLogs">
+            <EntityTypeMapping TypeName="HotLineLogModel.HotlineLog">
+              <MappingFragment StoreEntitySet="HotlineLog">
+                <ScalarProperty Name="STDElection_PrevYear" ColumnName="STDElection_PrevYear" />
+                <ScalarProperty Name="STDElection_ThisYear" ColumnName="STDElection_ThisYear" />
+                <ScalarProperty Name="PayReviewStatus" ColumnName="PayReviewStatus" />
+                <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
+                <ScalarProperty Name="STDElection_2021" ColumnName="STDElection_2021" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="ModifiedDt" ColumnName="ModifiedDt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDt" ColumnName="CreatedDt" />
+                <ScalarProperty Name="NotesFromBenefits" ColumnName="NotesFromBenefits" />
+                <ScalarProperty Name="RawDataNo" ColumnName="RawDataNo" />
+                <ScalarProperty Name="DiffHoursToFTE" ColumnName="DiffHoursToFTE" />
+                <ScalarProperty Name="FTEHours" ColumnName="FTEHours" />
+                <ScalarProperty Name="PayPeriodPayDate" ColumnName="PayPeriodPayDate" />
+                <ScalarProperty Name="HoursPreviouslyPaid" ColumnName="HoursPreviouslyPaid" />
+                <ScalarProperty Name="RateOfPay" ColumnName="RateOfPay" />
+                <ScalarProperty Name="STDElection_2020" ColumnName="STDElection_2020" />
+                <ScalarProperty Name="ReturnToWorkDt" ColumnName="ReturnToWorkDt" />
+                <ScalarProperty Name="LastDayWorked" ColumnName="LastDayWorked" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ClearedToWork" ColumnName="ClearedToWork" />
+                <ScalarProperty Name="FTEStatus" ColumnName="FTEStatus" />
+                <ScalarProperty Name="Operator" ColumnName="Operator" />
+                <ScalarProperty Name="DateOfCall" ColumnName="DateOfCall" />
+                <ScalarProperty Name="EmployeeLastName" ColumnName="EmployeeLastName" />
+                <ScalarProperty Name="EmployeeFirstName" ColumnName="EmployeeFirstName" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
