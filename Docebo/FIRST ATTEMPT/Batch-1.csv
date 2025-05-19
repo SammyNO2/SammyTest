@@ -1,0 +1,33 @@
+nl_course_id,docebo_id,docebo_code,Test_ID,Ques_ID,sequence,question_text,QuesAns_ID,answer_sequence,answer_text,correct
+4180,1006,Elearning-0000-17,n1796,n6072,0,I have read and understood the procedure for using the Radiology Patient Care Notes Form.,n12697,0,Yes,1
+4180,1006,Elearning-0000-17,n1796,n6072,1,I have read and understood the procedure for using the Radiology Patient Care Notes Form.,n12698,1,No,0
+19404,1007,Elearning-0000-170,n13480,n60285,0,Which of the following systems provides supplies and instruments for individual surgical procedures?,n200125,0,"a.	Exchange cart",0
+19404,1007,Elearning-0000-170,n13480,n60285,1,Which of the following systems provides supplies and instruments for individual surgical procedures?,n200126,1,"b.	Periodic automated replenishment system",0
+19404,1007,Elearning-0000-170,n13480,n60285,2,Which of the following systems provides supplies and instruments for individual surgical procedures?,n200127,2,"c.	Case cart",1
+19404,1007,Elearning-0000-170,n13480,n60285,3,Which of the following systems provides supplies and instruments for individual surgical procedures?,n200128,3,"d.	Requisition",0
+19404,1007,Elearning-0000-170,n13480,n60286,0,The inventory system that stocks supplies by established stock levels is called,n200129,0,"a.	A periodic automated replenishment system",1
+19404,1007,Elearning-0000-170,n13480,n60286,1,The inventory system that stocks supplies by established stock levels is called,n200130,1,"b.	Case cart",0
+19404,1007,Elearning-0000-170,n13480,n60286,2,The inventory system that stocks supplies by established stock levels is called,n200131,2,"c.	An ADT system",0
+19404,1007,Elearning-0000-170,n13480,n60286,3,The inventory system that stocks supplies by established stock levels is called,n200132,3,"d.	Exchange system",0
+19404,1007,Elearning-0000-170,n13480,n60287,0,The inventory system that uses two identical carts to facilitate supply replenishment is called the,n200133,0,"a.	Case cart system",0
+19404,1007,Elearning-0000-170,n13480,n60287,1,The inventory system that uses two identical carts to facilitate supply replenishment is called the,n200134,1,"b.	Exchange cart system",1
+19404,1007,Elearning-0000-170,n13480,n60287,2,The inventory system that uses two identical carts to facilitate supply replenishment is called the,n200135,2,"c.	Periodic automated replenishment system",0
+19404,1007,Elearning-0000-170,n13480,n60287,3,The inventory system that uses two identical carts to facilitate supply replenishment is called the,n200136,3,"d.	Requisition system",0
+19404,1007,Elearning-0000-170,n13480,n60288,0,Automated supply replenishment systems are,n200137,0,"a.	No longer used",0
+19404,1007,Elearning-0000-170,n13480,n60288,1,Automated supply replenishment systems are,n200138,1,"b.	Used only in surgery",0
+19404,1007,Elearning-0000-170,n13480,n60288,2,Automated supply replenishment systems are,n200139,2,"c.	Difficult to manage",0
+19404,1007,Elearning-0000-170,n13480,n60288,3,Automated supply replenishment systems are,n200140,3,"d.	Computerized",1
+19404,1007,Elearning-0000-170,n13480,n60289,0,The movement of supplies throughout the healthcare facility is called,n200141,0,"a.	Distribution",1
+19404,1007,Elearning-0000-170,n13480,n60289,1,The movement of supplies throughout the healthcare facility is called,n200142,1,"b.	Inventory management",0
+19404,1007,Elearning-0000-170,n13480,n60289,2,The movement of supplies throughout the healthcare facility is called,n200143,2,"c.	Case cart system",0
+19404,1007,Elearning-0000-170,n13480,n60289,3,The movement of supplies throughout the healthcare facility is called,n200144,3,"d.	Procurement",0
+19404,1007,Elearning-0000-170,n13480,n60290,0,Operational supplies are supplies that are dispensed for patient care,n200145,0,TRUE,0
+19404,1007,Elearning-0000-170,n13480,n60290,1,Operational supplies are supplies that are dispensed for patient care,n200146,1,FALSE,1
+19404,1007,Elearning-0000-170,n13480,n60291,0,Supplies such as disposable wraps are called,n200147,0,"a.	Consumable",1
+19404,1007,Elearning-0000-170,n13480,n60291,1,Supplies such as disposable wraps are called,n200148,1,"b.	Capital supplies",0
+19404,1007,Elearning-0000-170,n13480,n60291,2,Supplies such as disposable wraps are called,n200149,2,"c.	Patient care supplies",0
+19404,1007,Elearning-0000-170,n13480,n60291,3,Supplies such as disposable wraps are called,n200150,3,"d.	Non-refundable supplies",0
+19404,1007,Elearning-0000-170,n13480,n60292,0,Capital equipment items are,n200151,0,"a.	Usually used for patient care",0
+19404,1007,Elearning-0000-170,n13480,n60292,1,Capital equipment items are,n200152,1,"b.	Items with a lower purchase cost",0
+19404,1007,Elearning-0000-170,n13480,n60292,2,Capital equipment items are,n200153,2,"c.	Items with a higher purchase count",1
+19404,1007,Elearning-0000-170,n13480,n60292,3,Capital equipment items are,n200154,3,"d.	Purchased, stored, consumed and recorded",0

@@ -1,0 +1,376 @@
+nl_course_id,docebo_id,docebo_code,Test_ID,Ques_ID,sequence,question_text,QuesAns_ID,answer_sequence,answer_text,correct
+19550,2095,Questions-0000-61,n13602,n61134,0,Identify the rhythm,n203112,0,"a.	Agonal rhythm",0
+19550,2095,Questions-0000-61,n13602,n61134,1,Identify the rhythm,n203115,1,"b.	Idioventricular rhythm",1
+19550,2095,Questions-0000-61,n13602,n61134,2,Identify the rhythm,n203113,2,"c.	Junctional rhythm",0
+19550,2095,Questions-0000-61,n13602,n61134,3,Identify the rhythm,n203114,3,"d.	Sinus Bradycardia with aberrant intraventricular conduction",0
+19550,2095,Questions-0000-61,n13602,n61135,0,Identify the rhythm,n203116,0,"a.	Fine Ventricular fibrillation",0
+19550,2095,Questions-0000-61,n13602,n61135,1,Identify the rhythm,n203117,1,"b.	Artifact",0
+19550,2095,Questions-0000-61,n13602,n61135,2,Identify the rhythm,n203118,2,"c.	Ventricular standstill",0
+19550,2095,Questions-0000-61,n13602,n61135,3,Identify the rhythm,n203119,3,"d.	Asystole",1
+19550,2095,Questions-0000-61,n13602,n61136,0,Identify the rhythm,n203120,0,"a.	First degree heart block",0
+19550,2095,Questions-0000-61,n13602,n61136,1,Identify the rhythm,n203121,1,"b.	Second degree heart block type I",0
+19550,2095,Questions-0000-61,n13602,n61136,2,Identify the rhythm,n203122,2,"c.	Third degree heart block",0
+19550,2095,Questions-0000-61,n13602,n61136,3,Identify the rhythm,n203123,3,"d.	Second degree heart block type II",1
+19550,2095,Questions-0000-61,n13602,n61137,0,Identify the rhythm,n203127,0,"a.	Atrial flutter",1
+19550,2095,Questions-0000-61,n13602,n61137,1,Identify the rhythm,n203124,1,"b.	Sinus rhythm with PAC's",0
+19550,2095,Questions-0000-61,n13602,n61137,2,Identify the rhythm,n203125,2,"c.	Atrial fibrillation with rapid ventricular response",0
+19550,2095,Questions-0000-61,n13602,n61137,3,Identify the rhythm,n203126,3,"d.	Sinus arrhythmia",0
+19550,2095,Questions-0000-61,n13602,n61138,0,Identify the rhythm,n203128,0,"a.	Sinus tachycardia with aberrant intraventricular conduction",0
+19550,2095,Questions-0000-61,n13602,n61138,1,Identify the rhythm,n203129,1,"b.	Junctional tachycardia",0
+19550,2095,Questions-0000-61,n13602,n61138,2,Identify the rhythm,n203131,2,"c.	Ventricular tachycardia",1
+19550,2095,Questions-0000-61,n13602,n61138,3,Identify the rhythm,n203130,3,"d.	Supraventricular tachycardia",0
+19550,2095,Questions-0000-61,n13602,n61139,0,Identify the rhythm,n203132,0,"a.	Missed beats",0
+19550,2095,Questions-0000-61,n13602,n61139,1,Identify the rhythm,n203133,1,"b.	First degree heart block",0
+19550,2095,Questions-0000-61,n13602,n61139,2,Identify the rhythm,n203135,2,"c.	Second degree heart block type I",1
+19550,2095,Questions-0000-61,n13602,n61139,3,Identify the rhythm,n203134,3,"d.	Third degree heart block",0
+19550,2095,Questions-0000-61,n13602,n61140,0,Identify the rhythm,n203136,0,"a.	Multifocal atrial tachycardia",0
+19550,2095,Questions-0000-61,n13602,n61140,1,Identify the rhythm,n203139,1,"b.	Ventricular fibrillation",1
+19550,2095,Questions-0000-61,n13602,n61140,2,Identify the rhythm,n203137,2,"c.	Ventricular tachycardia",0
+19550,2095,Questions-0000-61,n13602,n61140,3,Identify the rhythm,n203138,3,"d.	Supraventricular tachycardia",0
+19550,2095,Questions-0000-61,n13602,n61141,0,Identify the rhythm,n203140,0,"a.	Ventricular tachycardia",0
+19550,2095,Questions-0000-61,n13602,n61141,1,Identify the rhythm,n203141,1,"b.	Multifocal atrial tachycardia",0
+19550,2095,Questions-0000-61,n13602,n61141,2,Identify the rhythm,n203142,2,"c.	Sinus rhythm with artifact",0
+19550,2095,Questions-0000-61,n13602,n61141,3,Identify the rhythm,n203143,3,"d.	Torsades de Pointes",1
+19550,2095,Questions-0000-61,n13602,n61142,0,Identify the rhythm,n203144,0,"a.	Sinus rhythm",0
+19550,2095,Questions-0000-61,n13602,n61142,1,Identify the rhythm,n203145,1,"b.	Paced ventricular rhythm",0
+19550,2095,Questions-0000-61,n13602,n61142,2,Identify the rhythm,n203147,2,"c.	Paced AV sequential rhythm",1
+19550,2095,Questions-0000-61,n13602,n61142,3,Identify the rhythm,n203146,3,"d.	Accelerated Idioventricular rhythm",0
+19550,2095,Questions-0000-61,n13602,n61143,0,Identify the rhythm,n203151,0,"a.	Sinus rhythm",1
+19550,2095,Questions-0000-61,n13602,n61143,1,Identify the rhythm,n203148,1,"b.	Sinus bradycardia",0
+19550,2095,Questions-0000-61,n13602,n61143,2,Identify the rhythm,n203149,2,"c.	Sinus arrhythmia",0
+19550,2095,Questions-0000-61,n13602,n61143,3,Identify the rhythm,n203150,3,"d.	Junctional rhythm",0
+19550,2095,Questions-0000-61,n13602,n61144,0,Identify the rhythm,n203155,0,"a.	Accelerated Junctional rhythm",1
+19550,2095,Questions-0000-61,n13602,n61144,1,Identify the rhythm,n203152,1,"b.	Second degree heart block type I-",0
+19550,2095,Questions-0000-61,n13602,n61144,2,Identify the rhythm,n203153,2,"c.	Third degree heart block",0
+19550,2095,Questions-0000-61,n13602,n61144,3,Identify the rhythm,n203154,3,"d.	Junctional rhythm",0
+19550,2095,Questions-0000-61,n13602,n61145,0,Identify the rhythm,n203159,0,"a.	Sinus bradycardia",1
+19550,2095,Questions-0000-61,n13602,n61145,1,Identify the rhythm,n203156,1,"b.	First degree heart block",0
+19550,2095,Questions-0000-61,n13602,n61145,2,Identify the rhythm,n203157,2,"c.	Second degree heart block type II",0
+19550,2095,Questions-0000-61,n13602,n61145,3,Identify the rhythm,n203158,3,"d.	Third degree heart block",0
+19550,2095,Questions-0000-61,n13602,n61146,0,Identify the rhythm,n203160,0,"a.	Idioventricular rhythm",0
+19550,2095,Questions-0000-61,n13602,n61146,1,Identify the rhythm,n203161,1,"b.	Accelerated junctional rhythm",0
+19550,2095,Questions-0000-61,n13602,n61146,2,Identify the rhythm,n203163,2,"c.	Junctional rhythm",1
+19550,2095,Questions-0000-61,n13602,n61146,3,Identify the rhythm,n203162,3,"d.	Junctional tachycardia rhythm",0
+19550,2095,Questions-0000-61,n13602,n61147,0,Identify the rhythm,n203164,0,"a.	First degree heart block",0
+19550,2095,Questions-0000-61,n13602,n61147,1,Identify the rhythm,n203165,1,"b.	Second degree heart block type I",0
+19550,2095,Questions-0000-61,n13602,n61147,2,Identify the rhythm,n203166,2,"c.	Second degree heart block type II",0
+19550,2095,Questions-0000-61,n13602,n61147,3,Identify the rhythm,n203167,3,"d.	Third degree heart block",1
+19550,2095,Questions-0000-61,n13602,n61148,0,Identify the rhythm,n203168,0,"a.	Atrial flutter",0
+19550,2095,Questions-0000-61,n13602,n61148,1,Identify the rhythm,n203169,1,"b.	Sinus rhythm with PAC's",0
+19550,2095,Questions-0000-61,n13602,n61148,2,Identify the rhythm,n203171,2,"c.	Atrial fibrillation with rapid ventricular response",1
+19550,2095,Questions-0000-61,n13602,n61148,3,Identify the rhythm,n203170,3,"d.	Sinus arrhythmia",0
+19550,2095,Questions-0000-61,n13602,n61149,0,Identify the rhythm,n203172,0,"a.	Normal sinus rhythm",0
+19550,2095,Questions-0000-61,n13602,n61149,1,Identify the rhythm,n203175,1,"b.	Normal sinus rhythm with premature ventricular contractions",1
+19550,2095,Questions-0000-61,n13602,n61149,2,Identify the rhythm,n203173,2,"c.	Normal sinus rhythm with premature junctional contractions",0
+19550,2095,Questions-0000-61,n13602,n61149,3,Identify the rhythm,n203174,3,"d.	Normal sinus rhythm with premature atrial contractions",0
+19201,2131,Questions-0000-97,n13291,n59222,0,Identify the rhythm:,n196314,0,A. A-flutter,0
+19201,2131,Questions-0000-97,n13291,n59222,1,Identify the rhythm:,n196315,1,B. Sinus tachycardia/ SVT,1
+19201,2131,Questions-0000-97,n13291,n59222,2,Identify the rhythm:,n196316,2,C. Normal Sinus,0
+19201,2131,Questions-0000-97,n13291,n59222,3,Identify the rhythm:,n196317,3,D. Atrial fibrillation,0
+19201,2131,Questions-0000-97,n13291,n59223,0,Identify the rhythm:,n196318,0,A. Sinus Bradycardia,0
+19201,2131,Questions-0000-97,n13291,n59223,1,Identify the rhythm:,n196319,1,B. Normal Sinus with PVCs,1
+19201,2131,Questions-0000-97,n13291,n59223,2,Identify the rhythm:,n196320,2,C. Sinus Bradycardia with PACs,0
+19201,2131,Questions-0000-97,n13291,n59223,3,Identify the rhythm:,n196321,3,D. Bundle Branch Block,0
+19201,2131,Questions-0000-97,n13291,n59233,0,Identify the rhythm:,n196346,0,A. A-flutter,0
+19201,2131,Questions-0000-97,n13291,n59233,1,Identify the rhythm:,n196347,1,B. A-fib,1
+19201,2131,Questions-0000-97,n13291,n59233,2,Identify the rhythm:,n196348,2,C. Artifact,0
+19201,2131,Questions-0000-97,n13291,n59233,3,Identify the rhythm:,n196349,3,D. Sinus tachycardia,0
+19201,2131,Questions-0000-97,n13291,n59234,0,Identify the rhythm:,n196350,0,A. Sinus Bradycardia,1
+19201,2131,Questions-0000-97,n13291,n59234,1,Identify the rhythm:,n196351,1,B. PEA,0
+19201,2131,Questions-0000-97,n13291,n59234,2,Identify the rhythm:,n196352,2,C. Normal Sinus,0
+19201,2131,Questions-0000-97,n13291,n59234,3,Identify the rhythm:,n196353,3,D. 1st Degree AV Block,0
+19201,2131,Questions-0000-97,n13291,n59235,0,Identify the rhythm:,n196354,0,A. Torsades de Pointe,1
+19201,2131,Questions-0000-97,n13291,n59235,1,Identify the rhythm:,n196355,1,B. Atrial fibrillation,0
+19201,2131,Questions-0000-97,n13291,n59235,2,Identify the rhythm:,n196356,2,C. Artifact,0
+19201,2131,Questions-0000-97,n13291,n59235,3,Identify the rhythm:,n196357,3,D. Ventricular tachycardia,0
+19201,2131,Questions-0000-97,n13291,n59236,0,Identify the rhythm:,n196358,0,A. Normal Sinus Rhythm,0
+19201,2131,Questions-0000-97,n13291,n59236,1,Identify the rhythm:,n196359,1,B. 2nd Degree Type I (Weinchebach),1
+19201,2131,Questions-0000-97,n13291,n59236,2,Identify the rhythm:,n196360,2,C. Complete Heart Block,0
+19201,2131,Questions-0000-97,n13291,n59236,3,Identify the rhythm:,n196361,3,D. Normal Sinus with PACs,0
+19201,2131,Questions-0000-97,n13291,n59237,0,Identify the rhythm:,n196362,0,A. 3rd Degree heart block,1
+19201,2131,Questions-0000-97,n13291,n59237,1,Identify the rhythm:,n196363,1,B. Bundle Branch Block,0
+19201,2131,Questions-0000-97,n13291,n59237,2,Identify the rhythm:,n196364,2,C. Normal Sinus Rhythm with PVCs,0
+19201,2131,Questions-0000-97,n13291,n59237,3,Identify the rhythm:,n196365,3,D. 2nd degree type I,0
+19201,2131,Questions-0000-97,n13291,n59238,0,Identify the rhythm:,n196366,0,A. NSR with bundle branch block,1
+19201,2131,Questions-0000-97,n13291,n59238,1,Identify the rhythm:,n196367,1,B. 3rd degree heart block,0
+19201,2131,Questions-0000-97,n13291,n59238,2,Identify the rhythm:,n196368,2,C. SVT,0
+19201,2131,Questions-0000-97,n13291,n59238,3,Identify the rhythm:,n196369,3,D. V-tach,0
+19201,2131,Questions-0000-97,n13291,n59239,0,Identify the rhythm:,n196370,0,A. Sinus tachycardia,0
+19201,2131,Questions-0000-97,n13291,n59239,1,Identify the rhythm:,n196371,1,B. SVT,1
+19201,2131,Questions-0000-97,n13291,n59239,2,Identify the rhythm:,n196372,2,C. A-flutter,0
+19201,2131,Questions-0000-97,n13291,n59239,3,Identify the rhythm:,n196373,3,D. A-fib,0
+19201,2131,Questions-0000-97,n13291,n59240,0,Identify the rhythm:,n196374,0,A. Sinus Bradycardia,0
+19201,2131,Questions-0000-97,n13291,n59240,1,Identify the rhythm:,n196375,1,B. Complete heart block,0
+19201,2131,Questions-0000-97,n13291,n59240,2,Identify the rhythm:,n196376,2,C. 2nd degree Type II,1
+19201,2131,Questions-0000-97,n13291,n59240,3,Identify the rhythm:,n196377,3,D. 1st degree heart block,0
+10965,433,Elearning-0000-1149,n5916,n28184,0,Identify the rhythm.,n85568,0,Premature Atrial Complex,1
+10965,433,Elearning-0000-1149,n5916,n28184,1,Identify the rhythm.,n85569,1,Atrial fibrillation,0
+10965,433,Elearning-0000-1149,n5916,n28184,2,Identify the rhythm.,n85570,2,Sinus arrhythmia,0
+10965,433,Elearning-0000-1149,n5916,n28184,3,Identify the rhythm.,n85571,3,Normal sinus rhythm,0
+10965,433,Elearning-0000-1149,n5916,n28184,4,Identify the rhythm.,n85572,4,None of the above,0
+10965,433,Elearning-0000-1149,n5916,n28185,0,Identify the rhythm.,n85573,0,Supraventricular Tachycardia,1
+10965,433,Elearning-0000-1149,n5916,n28185,1,Identify the rhythm.,n85574,1,Third Degree Heart Block,0
+10965,433,Elearning-0000-1149,n5916,n28185,2,Identify the rhythm.,n85575,2,Junctional Escape Rhythm,0
+10965,433,Elearning-0000-1149,n5916,n28185,3,Identify the rhythm.,n85576,3,Venticular Fibrillation,0
+10965,433,Elearning-0000-1149,n5916,n28185,4,Identify the rhythm.,n85577,4,None of the above,0
+10965,433,Elearning-0000-1149,n5916,n28186,0,Identify the rhythm.,n85578,0,First Degree Heart Block,0
+10965,433,Elearning-0000-1149,n5916,n28186,1,Identify the rhythm.,n85579,1,Atrial Flutter,0
+10965,433,Elearning-0000-1149,n5916,n28186,2,Identify the rhythm.,n85580,2,Atrial Fibrillation,1
+10965,433,Elearning-0000-1149,n5916,n28186,3,Identify the rhythm.,n85581,3,Sinus Arrhythmia,0
+10965,433,Elearning-0000-1149,n5916,n28186,4,Identify the rhythm.,n85582,4,Asystole,0
+10965,433,Elearning-0000-1149,n5916,n28187,0,Identify the rhythm.,n85583,0,Atrial Fibrillation,0
+10965,433,Elearning-0000-1149,n5916,n28187,1,Identify the rhythm.,n85584,1,Premature  Ventricular Complex,1
+10965,433,Elearning-0000-1149,n5916,n28187,2,Identify the rhythm.,n85585,2,Supraventricular tachycardia,0
+10965,433,Elearning-0000-1149,n5916,n28187,3,Identify the rhythm.,n85586,3,Premature atrial complex,0
+10965,433,Elearning-0000-1149,n5916,n28187,4,Identify the rhythm.,n85587,4,Accelerated idioventricular rhythm,0
+10965,433,Elearning-0000-1149,n5916,n28188,0,Identify the rhythm.,n85588,0,Sinus Bradycardia,0
+10965,433,Elearning-0000-1149,n5916,n28188,1,Identify the rhythm.,n85589,1,Bundle Branch Block,1
+10965,433,Elearning-0000-1149,n5916,n28188,2,Identify the rhythm.,n85590,2,Second Degree Heart Block Type I,0
+10965,433,Elearning-0000-1149,n5916,n28188,3,Identify the rhythm.,n85591,3,Normal Sinus Rhythm,0
+10965,433,Elearning-0000-1149,n5916,n28188,4,Identify the rhythm.,n85592,4,Second Degree Heart Block Type II,0
+10965,433,Elearning-0000-1149,n5916,n28189,0,Identify the rhythm.,n85593,0,Premature Atrial Complex,0
+10965,433,Elearning-0000-1149,n5916,n28189,1,Identify the rhythm.,n85594,1,Second Degree Heart Block Type II,1
+10965,433,Elearning-0000-1149,n5916,n28189,2,Identify the rhythm.,n85595,2,Sinus Arrhythmia,0
+10965,433,Elearning-0000-1149,n5916,n28189,3,Identify the rhythm.,n85596,3,Monitor Malfunction,0
+10965,433,Elearning-0000-1149,n5916,n28189,4,Identify the rhythm.,n85597,4,None of the above,0
+10965,433,Elearning-0000-1149,n5916,n28190,0,Identify the rhythm.,n85598,0,Pacemaker Single Chamber Ventricular,0
+10965,433,Elearning-0000-1149,n5916,n28190,1,Identify the rhythm.,n85599,1,Normal Sinus Rhythm,0
+10965,433,Elearning-0000-1149,n5916,n28190,2,Identify the rhythm.,n85600,2,Sinus Bradycardia,0
+10965,433,Elearning-0000-1149,n5916,n28190,3,Identify the rhythm.,n85601,3,Pacemaker Single Chamber Atrial,1
+10965,433,Elearning-0000-1149,n5916,n28190,4,Identify the rhythm.,n85602,4,None of the above,0
+10965,433,Elearning-0000-1149,n5916,n28191,0,Identify the rhythm.,n85603,0,Wolf-Parkinson-White Syndrome,0
+10965,433,Elearning-0000-1149,n5916,n28191,1,Identify the rhythm.,n85604,1,Ventricular Tachycardia,1
+10965,433,Elearning-0000-1149,n5916,n28191,2,Identify the rhythm.,n85605,2,Junctional Escape rhythm,0
+10965,433,Elearning-0000-1149,n5916,n28191,3,Identify the rhythm.,n85606,3,Accelerated Idioventricular Rhythm,0
+10965,433,Elearning-0000-1149,n5916,n28191,4,Identify the rhythm.,n85607,4,Wandering Atrial Pacemaker,0
+10965,433,Elearning-0000-1149,n5916,n28212,0,Identify the rhythm.,n85674,0,Third degree Heart Block,1
+10965,433,Elearning-0000-1149,n5916,n28212,1,Identify the rhythm.,n85675,1,Premature Atrial Complex,0
+10965,433,Elearning-0000-1149,n5916,n28212,2,Identify the rhythm.,n85676,2,Sinus Arrhythmia,0
+10965,433,Elearning-0000-1149,n5916,n28212,3,Identify the rhythm.,n85677,3,Sinus Bradycardia,0
+10965,433,Elearning-0000-1149,n5916,n28212,4,Identify the rhythm.,n85678,4,None of the above,0
+10965,433,Elearning-0000-1149,n5916,n28213,0,Identify the rhythm,n85679,0,Normal Sinus Rhythm,0
+10965,433,Elearning-0000-1149,n5916,n28213,1,Identify the rhythm,n85680,1,Sinus Bradycardia,1
+10965,433,Elearning-0000-1149,n5916,n28213,2,Identify the rhythm,n85681,2,Sinoatrial Block,0
+10965,433,Elearning-0000-1149,n5916,n28213,3,Identify the rhythm,n85682,3,Third Degree Heart Block,0
+10965,433,Elearning-0000-1149,n5916,n28213,4,Identify the rhythm,n85683,4,None of the above,0
+10965,433,Elearning-0000-1149,n5916,n28215,0,Identify the rhythm.,n85686,0,Idioventricular Rhythm,0
+10965,433,Elearning-0000-1149,n5916,n28215,1,Identify the rhythm.,n85687,1,Ventricular Fibrillation,1
+10965,433,Elearning-0000-1149,n5916,n28215,2,Identify the rhythm.,n85688,2,Sinus Arrest,0
+10965,433,Elearning-0000-1149,n5916,n28215,3,Identify the rhythm.,n85689,3,Torsades de Pointes,0
+10965,433,Elearning-0000-1149,n5916,n28215,4,Identify the rhythm.,n85690,4,None of the above,0
+10965,433,Elearning-0000-1149,n5916,n28216,0,Identify the rhythm.,n85691,0,Second Degree Heart Block Type II,0
+10965,433,Elearning-0000-1149,n5916,n28216,1,Identify the rhythm.,n85692,1,Third Degree Heart Block,0
+10965,433,Elearning-0000-1149,n5916,n28216,2,Identify the rhythm.,n85693,2,Pacemaker Failure to Capture,0
+10965,433,Elearning-0000-1149,n5916,n28216,3,Identify the rhythm.,n85694,3,Sinoatrial Arrest,0
+10965,433,Elearning-0000-1149,n5916,n28216,4,Identify the rhythm.,n85695,4,Premature Ventricular Complex Trigeminy,1
+10965,433,Elearning-0000-1149,n5916,n28217,0,Identify the rhythm.,n85696,0,Sinus Arrythmia,1
+10965,433,Elearning-0000-1149,n5916,n28217,1,Identify the rhythm.,n85697,1,Normal Sinus Rhythm,0
+10965,433,Elearning-0000-1149,n5916,n28217,2,Identify the rhythm.,n85698,2,Sinus Bradycardia,0
+10965,433,Elearning-0000-1149,n5916,n28217,3,Identify the rhythm.,n85699,3,First Degree Heart Blocl,0
+10965,433,Elearning-0000-1149,n5916,n28217,4,Identify the rhythm.,n85700,4,None of the above,0
+10965,433,Elearning-0000-1149,n5916,n28218,0,Identify the rhythm.,n85701,0,Normal Sinus Rhythm,0
+10965,433,Elearning-0000-1149,n5916,n28218,1,Identify the rhythm.,n85702,1,Sinus Tachycardia,1
+10965,433,Elearning-0000-1149,n5916,n28218,2,Identify the rhythm.,n85703,2,Ventricular tachycardia,0
+10965,433,Elearning-0000-1149,n5916,n28218,3,Identify the rhythm.,n85704,3,First Degree Heart Block,0
+10965,433,Elearning-0000-1149,n5916,n28218,4,Identify the rhythm.,n85705,4,None of the above,0
+10965,433,Elearning-0000-1149,n5916,n28219,0,Identify the rhythm.,n85706,0,Ventricular Tachycardia,1
+10965,433,Elearning-0000-1149,n5916,n28219,1,Identify the rhythm.,n85707,1,Asystole,0
+10965,433,Elearning-0000-1149,n5916,n28219,2,Identify the rhythm.,n85708,2,Bundle Branch Block,0
+10965,433,Elearning-0000-1149,n5916,n28219,3,Identify the rhythm.,n85709,3,Idioventricular Rhythm,0
+10965,433,Elearning-0000-1149,n5916,n28219,4,Identify the rhythm.,n85710,4,None of the above,0
+10965,433,Elearning-0000-1149,n5916,n28220,0,Identify the rhythm.,n85711,0,Atrial Fibrillation,1
+10965,433,Elearning-0000-1149,n5916,n28220,1,Identify the rhythm.,n85712,1,Atrial Flutter,0
+10965,433,Elearning-0000-1149,n5916,n28220,2,Identify the rhythm.,n85713,2,Artifact,0
+10965,433,Elearning-0000-1149,n5916,n28220,3,Identify the rhythm.,n85714,3,Ventricular Fibrillation,0
+10965,433,Elearning-0000-1149,n5916,n28220,4,Identify the rhythm.,n85715,4,None of the above,0
+10965,433,Elearning-0000-1149,n5916,n28221,0,Identify the rhythm.,n85716,0,Normal Sinus Rhythm,0
+10965,433,Elearning-0000-1149,n5916,n28221,1,Identify the rhythm.,n85717,1,Sinus Arrhythmia,0
+10965,433,Elearning-0000-1149,n5916,n28221,2,Identify the rhythm.,n85718,2,First Degree Heart Block,1
+10965,433,Elearning-0000-1149,n5916,n28221,3,Identify the rhythm.,n85719,3,Idioventricular Rhythm,0
+10965,433,Elearning-0000-1149,n5916,n28221,4,Identify the rhythm.,n85720,4,None of the above,0
+10965,433,Elearning-0000-1149,n5916,n28222,0,Identify the rhythm.,n85721,0,Ventricular Fibrillation,0
+10965,433,Elearning-0000-1149,n5916,n28222,1,Identify the rhythm.,n85722,1,Sinus Arrest,0
+10965,433,Elearning-0000-1149,n5916,n28222,2,Identify the rhythm.,n85723,2,Ventricular Tachycardia Torsade de Pointes,1
+10965,433,Elearning-0000-1149,n5916,n28222,3,Identify the rhythm.,n85724,3,Asystole,0
+10965,433,Elearning-0000-1149,n5916,n28222,4,Identify the rhythm.,n85725,4,None of the above,0
+10965,433,Elearning-0000-1149,n5916,n28223,0,Identify the rhythm.,n85726,0,Atrial Flutter,1
+10965,433,Elearning-0000-1149,n5916,n28223,1,Identify the rhythm.,n85727,1,Atrial Fibrillation,0
+10965,433,Elearning-0000-1149,n5916,n28223,2,Identify the rhythm.,n85728,2,Ventricular Tachycardia,0
+10965,433,Elearning-0000-1149,n5916,n28223,3,Identify the rhythm.,n85729,3,Third Degree Heart Block,0
+10965,433,Elearning-0000-1149,n5916,n28223,4,Identify the rhythm.,n85730,4,None of the above,0
+10965,433,Elearning-0000-1149,n5916,n28225,0,Identify the rhythm.,n85733,0,Sinus Bradycardia,0
+10965,433,Elearning-0000-1149,n5916,n28225,1,Identify the rhythm.,n85734,1,Normal Sinus Rhythm,1
+10965,433,Elearning-0000-1149,n5916,n28225,2,Identify the rhythm.,n85735,2,Sinus Arrhythmia,0
+10965,433,Elearning-0000-1149,n5916,n28225,3,Identify the rhythm.,n85736,3,First degree Heart Block,0
+10965,433,Elearning-0000-1149,n5916,n28225,4,Identify the rhythm.,n85737,4,None of the above,0
+17931,1124,Elearning-0000-237,n12148,n52182,0,INTERPRET THE RHYTHM,n171524,0,ST,0
+17931,1124,Elearning-0000-237,n12148,n52182,1,INTERPRET THE RHYTHM,n171525,1,SB,0
+17931,1124,Elearning-0000-237,n12148,n52182,2,INTERPRET THE RHYTHM,n171526,2,NSR,1
+17931,1124,Elearning-0000-237,n12148,n52182,3,INTERPRET THE RHYTHM,n171527,3,JUNCTIONAL,0
+17931,1124,Elearning-0000-237,n12148,n52183,0,INTERPRET THE RHYTHM,n171528,0,ST,1
+17931,1124,Elearning-0000-237,n12148,n52183,1,INTERPRET THE RHYTHM,n171529,1,SR,0
+17931,1124,Elearning-0000-237,n12148,n52183,2,INTERPRET THE RHYTHM,n171530,2,AFIB,0
+17931,1124,Elearning-0000-237,n12148,n52183,3,INTERPRET THE RHYTHM,n171531,3,VT,0
+17931,1124,Elearning-0000-237,n12148,n52186,0,INTERPRET THE RHYTHM,n171536,0,JUNCTIONAL,0
+17931,1124,Elearning-0000-237,n12148,n52186,1,INTERPRET THE RHYTHM,n171537,1,AFLUTTER,0
+17931,1124,Elearning-0000-237,n12148,n52186,2,INTERPRET THE RHYTHM,n171538,2,AFIB,0
+17931,1124,Elearning-0000-237,n12148,n52186,3,INTERPRET THE RHYTHM,n171539,3,SINUS ARRHYTHMIA,1
+17931,1124,Elearning-0000-237,n12148,n52187,0,INTERPRET THE RHYTHM,n171540,0,ASYSTOLE,0
+17931,1124,Elearning-0000-237,n12148,n52187,1,INTERPRET THE RHYTHM,n171541,1,SINUS ARREST,1
+17931,1124,Elearning-0000-237,n12148,n52187,2,INTERPRET THE RHYTHM,n171542,2,AFIB,0
+5901,1674,Elearning-0000-737,n3102,n13019,0,Identify this rhythm:,n33890,0,Sinus Bradycardia,0
+5901,1674,Elearning-0000-737,n3102,n13019,1,Identify this rhythm:,n33891,1,Accelerated Junctional,1
+5901,1674,Elearning-0000-737,n3102,n13019,2,Identify this rhythm:,n33892,2,Atrial Fibrillation,0
+5901,1674,Elearning-0000-737,n3102,n13019,3,Identify this rhythm:,n33893,3,First Degree Block,0
+5901,1674,Elearning-0000-737,n3102,n13020,0,Identify this rhythm:,n33894,0,Ventricular Tachycardia,0
+5901,1674,Elearning-0000-737,n3102,n13020,1,Identify this rhythm:,n33895,1,Atrial Flutter,0
+5901,1674,Elearning-0000-737,n3102,n13020,2,Identify this rhythm:,n33896,2,Ventricular Fibrillation,1
+5901,1674,Elearning-0000-737,n3102,n13020,3,Identify this rhythm:,n33897,3,Supraventricular Tachycardia,0
+5901,1674,Elearning-0000-737,n3102,n13021,0,Identify this rhythm:,n33898,0,Junctional,0
+5901,1674,Elearning-0000-737,n3102,n13021,1,Identify this rhythm:,n33899,1,"Second Decree Block, Type 1",0
+5901,1674,Elearning-0000-737,n3102,n13021,2,Identify this rhythm:,n33900,2,Third Degree Block,0
+5901,1674,Elearning-0000-737,n3102,n13021,3,Identify this rhythm:,n33901,3,First Degree Block,1
+5901,1674,Elearning-0000-737,n3102,n13022,0,Identify this rhythm:,n33902,0,Supraventricular Tachycardia,1
+5901,1674,Elearning-0000-737,n3102,n13022,1,Identify this rhythm:,n33903,1,Ventricular Tachycardia,0
+5901,1674,Elearning-0000-737,n3102,n13022,2,Identify this rhythm:,n33904,2,Normal Sinus Rhythm,0
+5901,1674,Elearning-0000-737,n3102,n13022,3,Identify this rhythm:,n33905,3,Junctional,0
+5901,1674,Elearning-0000-737,n3102,n13023,0,Identify this rhythm:,n33906,0,Third Degree Block,0
+5901,1674,Elearning-0000-737,n3102,n13023,1,Identify this rhythm:,n33907,1,"Second Degree Block, Type 1 (Wenckebach)",1
+5901,1674,Elearning-0000-737,n3102,n13023,2,Identify this rhythm:,n33908,2,Accelerated Junctional,0
+5901,1674,Elearning-0000-737,n3102,n13023,3,Identify this rhythm:,n33909,3,"Second Degree Block, Type 2",0
+5901,1674,Elearning-0000-737,n3102,n13025,0,Identify this rhythm:,n33914,0,Atrial Fibrillation,1
+5901,1674,Elearning-0000-737,n3102,n13025,1,Identify this rhythm:,n33915,1,Normal Sinus Rhythm,0
+5901,1674,Elearning-0000-737,n3102,n13025,2,Identify this rhythm:,n33916,2,Atrial Flutter,0
+5901,1674,Elearning-0000-737,n3102,n13025,3,Identify this rhythm:,n33917,3,Sinus Tachycardia,0
+5901,1674,Elearning-0000-737,n3102,n13026,0,Identify this rhythm:,n33918,0,Normal Sinus Rhythm,0
+5901,1674,Elearning-0000-737,n3102,n13026,1,Identify this rhythm:,n33919,1,Sinus Bradycardia,0
+5901,1674,Elearning-0000-737,n3102,n13026,2,Identify this rhythm:,n33920,2,Atrial Fibrillation,0
+5901,1674,Elearning-0000-737,n3102,n13026,3,Identify this rhythm:,n33921,3,Junctional,1
+5901,1674,Elearning-0000-737,n3102,n13027,0,Identify this rhythm:,n33922,0,Junctional,0
+5901,1674,Elearning-0000-737,n3102,n13027,1,Identify this rhythm:,n33923,1,Asystole,1
+5901,1674,Elearning-0000-737,n3102,n13027,2,Identify this rhythm:,n33924,2,Ventricular Fibrillation,0
+5901,1674,Elearning-0000-737,n3102,n13027,3,Identify this rhythm:,n33925,3,Third Degree Block,0
+5901,1674,Elearning-0000-737,n3102,n13028,0,Identify this rhythm:,n33926,0,Normal Sinus Rhythm,0
+5901,1674,Elearning-0000-737,n3102,n13028,1,Identify this rhythm:,n33927,1,Atrial Fibrillation,0
+5901,1674,Elearning-0000-737,n3102,n13028,2,Identify this rhythm:,n33928,2,Sinus Tachycardia,1
+5901,1674,Elearning-0000-737,n3102,n13028,3,Identify this rhythm:,n33929,3,Accelerated Junctional,0
+5901,1674,Elearning-0000-737,n3102,n13029,0,Identify this rhythm:,n33930,0,"Second Degree Block, Type 2",1
+5901,1674,Elearning-0000-737,n3102,n13029,1,Identify this rhythm:,n33931,1,"Second Degree Block, Type 1 (Wenckebach)",0
+5901,1674,Elearning-0000-737,n3102,n13029,2,Identify this rhythm:,n33932,2,Sinus Bradycardia,0
+5901,1674,Elearning-0000-737,n3102,n13029,3,Identify this rhythm:,n33933,3,Atrial Fibrillation,0
+5901,1674,Elearning-0000-737,n3102,n13030,0,Identify this rhythm:,n33934,0,Atrial Fibrillation,0
+5901,1674,Elearning-0000-737,n3102,n13030,1,Identify this rhythm:,n33935,1,Normal Sinus Rhythm,0
+5901,1674,Elearning-0000-737,n3102,n13030,2,Identify this rhythm:,n33936,2,Atrial Flutter,1
+5901,1674,Elearning-0000-737,n3102,n13030,3,Identify this rhythm:,n33937,3,Sinus Tachycardia,0
+5901,1674,Elearning-0000-737,n3102,n13031,0,Identify this rhythm:,n33938,0,Third Degree Block,0
+5901,1674,Elearning-0000-737,n3102,n13031,1,Identify this rhythm:,n33939,1,First Degree Block,0
+5901,1674,Elearning-0000-737,n3102,n13031,2,Identify this rhythm:,n33940,2,Normal Sinus Rhythm,0
+5901,1674,Elearning-0000-737,n3102,n13031,3,Identify this rhythm:,n33941,3,Sinus Bradycardia,1
+5901,1674,Elearning-0000-737,n3102,n13032,0,Identify this rhythm:,n33942,0,Supraventricular Tachycardia,0
+5901,1674,Elearning-0000-737,n3102,n13032,1,Identify this rhythm:,n33943,1,Ventricular Tachycardia,1
+5901,1674,Elearning-0000-737,n3102,n13032,2,Identify this rhythm:,n33944,2,Accelerated Junctional,0
+5901,1674,Elearning-0000-737,n3102,n13032,3,Identify this rhythm:,n33945,3,Sinus Tachycardia,0
+5901,1674,Elearning-0000-737,n3102,n13033,0,Identify this rhythm:,n33946,0,Sinus Bradycardia,0
+5901,1674,Elearning-0000-737,n3102,n13033,1,Identify this rhythm:,n33947,1,Atrial Flutter,0
+5901,1674,Elearning-0000-737,n3102,n13033,2,Identify this rhythm:,n33948,2,Normal Sinus Rhythm,1
+5901,1674,Elearning-0000-737,n3102,n13033,3,Identify this rhythm:,n33949,3,Sinus Tachycardia,0
+5901,1674,Elearning-0000-737,n3102,n13034,0,Identify this rhythm:,n33950,0,Sinus Bradycardia,0
+5901,1674,Elearning-0000-737,n3102,n13034,1,Identify this rhythm:,n33951,1,Third Degree Block,1
+5901,1674,Elearning-0000-737,n3102,n13034,2,Identify this rhythm:,n33952,2,"Second Degree Block, Type 2",0
+5901,1674,Elearning-0000-737,n3102,n13034,3,Identify this rhythm:,n33953,3,First Degree Block,0
+19404,1007,Elearning-0000-170,n13480,n60303,0,The following symbolizes,n200190,0,"a.	product lot number",0
+19404,1007,Elearning-0000-170,n13480,n60303,1,The following symbolizes,n200191,1,"b.	use by date",0
+19404,1007,Elearning-0000-170,n13480,n60303,2,The following symbolizes,n200192,2,"c.	single-use item (do not reuse)",0
+19404,1007,Elearning-0000-170,n13480,n60303,3,The following symbolizes,n200193,3,"d.	product manufacture date",1
+19404,1007,Elearning-0000-170,n13480,n60304,0,The following symbolizes,n200194,0,"a.	product lot number",0
+19404,1007,Elearning-0000-170,n13480,n60304,1,The following symbolizes,n200195,1,"b.	use by date",1
+19404,1007,Elearning-0000-170,n13480,n60304,2,The following symbolizes,n200196,2,"c.	single-use item (do not reuse)",0
+19404,1007,Elearning-0000-170,n13480,n60304,3,The following symbolizes,n200197,3,"d.	product manufacturer date",0
+18675,2025,Questions-0000-148,n12809,n56866,0,The following symbolizes,n188235,0,"a.	product lot number",0
+18675,2025,Questions-0000-148,n12809,n56866,1,The following symbolizes,n188236,1,"b.	use by date",0
+18675,2025,Questions-0000-148,n12809,n56866,2,The following symbolizes,n188237,2,"c.	single-use item (do not reuse)",0
+18675,2025,Questions-0000-148,n12809,n56866,3,The following symbolizes,n188238,3,"d.	product manufacture date",1
+18676,2026,Questions-0000-149,n12810,n57198,0,The following symbolizes,n189388,0,"a.	product lot number",0
+18676,2026,Questions-0000-149,n12810,n57198,1,The following symbolizes,n189389,1,"b.	use by date",1
+18676,2026,Questions-0000-149,n12810,n57198,2,The following symbolizes,n189390,2,"c.	single-use item (do not reuse)",0
+18676,2026,Questions-0000-149,n12810,n57198,3,The following symbolizes,n189391,3,"d.	product manufacturer date",0
+18652,2032,Questions-0000-154,n12788,n56309,0,The following symbolizes,n186273,0,"a.	product lot number",0
+18652,2032,Questions-0000-154,n12788,n56309,1,The following symbolizes,n186274,1,"b.	use by date",0
+18652,2032,Questions-0000-154,n12788,n56309,2,The following symbolizes,n186275,2,"c.	single-use item (do not reuse)",0
+18652,2032,Questions-0000-154,n12788,n56309,3,The following symbolizes,n186276,3,"d.	product manufacture date",1
+18652,2032,Questions-0000-154,n12788,n56310,0,The following symbolizes,n186277,0,"a.	product number",0
+18652,2032,Questions-0000-154,n12788,n56310,1,The following symbolizes,n186278,1,"b.	use by date",1
+18652,2032,Questions-0000-154,n12788,n56310,2,The following symbolizes,n186279,2,"c.	single-use item (do not reuse)",0
+18652,2032,Questions-0000-154,n12788,n56310,3,The following symbolizes,n186280,3,"d.	product manufacture date",0
+15072,2109,Questions-0000-75,n9411,n47370,0,What is the interpretation for this rhythm?,n154768,0,A. Sinus Bradycardia,0
+15072,2109,Questions-0000-75,n9411,n47370,1,What is the interpretation for this rhythm?,n154769,1,B. Normal Sinus Rhythm,1
+15072,2109,Questions-0000-75,n9411,n47370,2,What is the interpretation for this rhythm?,n154770,2,C. Sinus Arrhythmia,0
+15072,2109,Questions-0000-75,n9411,n47371,0,What is the interpretation for this rhythm?,n154771,0,A. Polymorphic Ventricular Tachycardia,1
+15072,2109,Questions-0000-75,n9411,n47371,1,What is the interpretation for this rhythm?,n154772,1,B. Monomorphic Ventricular Tachycardia,0
+15072,2109,Questions-0000-75,n9411,n47371,2,What is the interpretation for this rhythm?,n154773,2,C. Ventricular Fibrillation,0
+15072,2109,Questions-0000-75,n9411,n47372,0,What is the EKG interpretation for this rhythm?,n154774,0,A. Normal Sinus Rhythm,0
+15072,2109,Questions-0000-75,n9411,n47372,1,What is the EKG interpretation for this rhythm?,n154775,1,B.   Sinus Rhythm with Bundle Branch Block,1
+15072,2109,Questions-0000-75,n9411,n47372,2,What is the EKG interpretation for this rhythm?,n154776,2,C. Sinus Rhythm with premature ventricular contractions,0
+15072,2109,Questions-0000-75,n9411,n47378,0,What is the heart rate of the rhythm below?,n154792,0,A. 44,1
+15072,2109,Questions-0000-75,n9411,n47378,1,What is the heart rate of the rhythm below?,n154793,1,B. 50,0
+15072,2109,Questions-0000-75,n9411,n47378,2,What is the heart rate of the rhythm below?,n154794,2,c. 36,0
+15072,2109,Questions-0000-75,n9411,n47379,0,What is the interpretation of the following rhythm?,n154795,0,A. Idioventricular rhythm,1
+15072,2109,Questions-0000-75,n9411,n47379,1,What is the interpretation of the following rhythm?,n154796,1,B. Sinus Bradycardia,0
+15072,2109,Questions-0000-75,n9411,n47379,2,What is the interpretation of the following rhythm?,n154797,2,C. Complete heart block,0
+15072,2109,Questions-0000-75,n9411,n47380,0,What is the QRS interval of the rhythm below?,n154798,0,A. .04 seconds,0
+15072,2109,Questions-0000-75,n9411,n47380,1,What is the QRS interval of the rhythm below?,n154799,1,B. .08 seconds,1
+15072,2109,Questions-0000-75,n9411,n47380,2,What is the QRS interval of the rhythm below?,n154800,2,C. .12 seconds,0
+15072,2109,Questions-0000-75,n9411,n47381,0,What is the interpretation of the following rhythm?,n154801,0,A. Ventricular fibrillation,0
+15072,2109,Questions-0000-75,n9411,n47381,1,What is the interpretation of the following rhythm?,n154802,1,B. Asystole,1
+15072,2109,Questions-0000-75,n9411,n47381,2,What is the interpretation of the following rhythm?,n154803,2,C. Fine ventricular fibrillation,0
+15072,2109,Questions-0000-75,n9411,n47382,0,What is the QRS interval for the rhythm below?,n154804,0,A. .04 seconds,1
+15072,2109,Questions-0000-75,n9411,n47382,1,What is the QRS interval for the rhythm below?,n154805,1,B. .08 seconds,0
+15072,2109,Questions-0000-75,n9411,n47382,2,What is the QRS interval for the rhythm below?,n154806,2,C. 0.12 seconds,0
+15072,2109,Questions-0000-75,n9411,n47385,0,What is the interpretation of the rhythm below?,n154813,0,A. Second degree heart block Type 2,0
+15072,2109,Questions-0000-75,n9411,n47385,1,What is the interpretation of the rhythm below?,n154814,1,B. Complete heart block,0
+15072,2109,Questions-0000-75,n9411,n47385,2,What is the interpretation of the rhythm below?,n154815,2,C. Second degree heart block Type 1,1
+15072,2109,Questions-0000-75,n9411,n47388,0,What is the EKG interpretation of the rhythm below?,n154822,0,A. Monomorphic Ventricular Tachycardia,1
+15072,2109,Questions-0000-75,n9411,n47388,1,What is the EKG interpretation of the rhythm below?,n154823,1,B. Torsades,0
+15072,2109,Questions-0000-75,n9411,n47388,2,What is the EKG interpretation of the rhythm below?,n154824,2,C. Accelerated Idioventricular,0
+15072,2109,Questions-0000-75,n9411,n47390,0,What is the EKG interpretation of the rhythm below?,n154828,0,A. Polymorphic ventricular tachycardia,1
+15072,2109,Questions-0000-75,n9411,n47390,1,What is the EKG interpretation of the rhythm below?,n154829,1,B. Monomorphic ventricular tachycardia,0
+15072,2109,Questions-0000-75,n9411,n47390,2,What is the EKG interpretation of the rhythm below?,n154830,2,C. Ventricular fibrillation,0
+15072,2109,Questions-0000-75,n9411,n47375,0,What is the EKG interpretation of the strip below?,n154783,0,A. Ventricular Tachycardia,0
+15072,2109,Questions-0000-75,n9411,n47375,1,What is the EKG interpretation of the strip below?,n154784,1,B. Torsades,0
+15072,2109,Questions-0000-75,n9411,n47375,2,What is the EKG interpretation of the strip below?,n154785,2,C. Ventricular fibrillation,1
+15072,2109,Questions-0000-75,n9411,n47376,0,What is the heart rate of the strip below?,n154786,0,A. 115,1
+15072,2109,Questions-0000-75,n9411,n47376,1,What is the heart rate of the strip below?,n154787,1,B. 100,0
+15072,2109,Questions-0000-75,n9411,n47376,2,What is the heart rate of the strip below?,n154788,2,C. 140,0
+15072,2109,Questions-0000-75,n9411,n47377,0,What is the interpretation of the strip below?,n154789,0,A. Atrial fibrillation,0
+15072,2109,Questions-0000-75,n9411,n47377,1,What is the interpretation of the strip below?,n154790,1,B. Sinus tachycardia,0
+15072,2109,Questions-0000-75,n9411,n47377,2,What is the interpretation of the strip below?,n154791,2,C. Atrial flutter,1
+15072,2109,Questions-0000-75,n9411,n47383,0,What is the EKG interpretation for the strip below?,n154807,0,A. Atrial fibrillation,0
+15072,2109,Questions-0000-75,n9411,n47383,1,What is the EKG interpretation for the strip below?,n154808,1,B. Atrial flutter,1
+15072,2109,Questions-0000-75,n9411,n47383,2,What is the EKG interpretation for the strip below?,n154809,2,C. Second degree heart block,0
+15072,2109,Questions-0000-75,n9411,n47384,0,What is the EKG interpretation of the strip below?,n154810,0,A. Sinus bradycardia,0
+15072,2109,Questions-0000-75,n9411,n47384,1,What is the EKG interpretation of the strip below?,n154811,1,B. Accelerated junctional rhythm,0
+15072,2109,Questions-0000-75,n9411,n47384,2,What is the EKG interpretation of the strip below?,n154812,2,C. Junctional rhythm,1
+15072,2109,Questions-0000-75,n9411,n47386,0,What is the PR Interval on the strip below?,n154816,0,A. 0.20 seconds,0
+15072,2109,Questions-0000-75,n9411,n47386,1,What is the PR Interval on the strip below?,n154817,1,B. 0.28 seconds,0
+15072,2109,Questions-0000-75,n9411,n47386,2,What is the PR Interval on the strip below?,n154818,2,C. 0.24 seconds,1
+15072,2109,Questions-0000-75,n9411,n47387,0,What is the EKG interpretation of the strip below?,n154819,0,A. Normal sinus rhythm,0
+15072,2109,Questions-0000-75,n9411,n47387,1,What is the EKG interpretation of the strip below?,n154820,1,B. Sinus tachycardia,1
+15072,2109,Questions-0000-75,n9411,n47387,2,What is the EKG interpretation of the strip below?,n154821,2,C. Supraventricular tachycardia,0
+15072,2109,Questions-0000-75,n9411,n47389,0,What is the EKG interpretation of the strip below?,n154825,0,A. Second degree heart block Type 1,0
+15072,2109,Questions-0000-75,n9411,n47389,1,What is the EKG interpretation of the strip below?,n154826,1,B. Second degree heart block Type 2,1
+15072,2109,Questions-0000-75,n9411,n47389,2,What is the EKG interpretation of the strip below?,n154827,2,C. Complete heart block,0
+15072,2109,Questions-0000-75,n9411,n47391,0,What is the EKG interpretation of the strip below?,n154831,0,A. Complete heart block,1
+15072,2109,Questions-0000-75,n9411,n47391,1,What is the EKG interpretation of the strip below?,n154832,1,B. Second degree heart block Type 2,0
+15072,2109,Questions-0000-75,n9411,n47391,2,What is the EKG interpretation of the strip below?,n154833,2,C. Second degree heart block Type 1,0
+15072,2109,Questions-0000-75,n9411,n47392,0,What is the EKG interpretation for the strip below?,n154834,0,A. Junctional rhythm,0
+15072,2109,Questions-0000-75,n9411,n47392,1,What is the EKG interpretation for the strip below?,n154835,1,B. Accelerated junctional rhythm,1
+15072,2109,Questions-0000-75,n9411,n47392,2,What is the EKG interpretation for the strip below?,n154836,2,C. Junctional tachycardia,0
+15072,2109,Questions-0000-75,n9411,n47393,0,What is the EKG interpretation of the strip below?,n154837,0,A. Idioventricular rhythm,1
+15072,2109,Questions-0000-75,n9411,n47393,1,What is the EKG interpretation of the strip below?,n154838,1,B. Complete heart block,0
+15072,2109,Questions-0000-75,n9411,n47393,2,What is the EKG interpretation of the strip below?,n154839,2,C. Junctional rhythm,0
+15072,2109,Questions-0000-75,n9411,n47394,0,What is the interpretation of the strip below?,n154840,0,A. Atrial fibrillation,1
+15072,2109,Questions-0000-75,n9411,n47394,1,What is the interpretation of the strip below?,n154841,1,B. Atrial flutter,0
+15072,2109,Questions-0000-75,n9411,n47394,2,What is the interpretation of the strip below?,n154842,2,"C, Sinus tachycardia",0
+15072,2109,Questions-0000-75,n9411,n47395,0,What is the EKG interpretation of the strip below?,n154843,0,A. Supraventricular tachycardia,1
+15072,2109,Questions-0000-75,n9411,n47395,1,What is the EKG interpretation of the strip below?,n154844,1,B. Sinus tachycardia,0
+15072,2109,Questions-0000-75,n9411,n47395,2,What is the EKG interpretation of the strip below?,n154845,2,C. Junctional tachycardia,0
